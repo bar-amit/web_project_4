@@ -1,3 +1,12 @@
 .gallery__title {
-  
+  width: calc(100% - 21px);
+  margin: 0;
+  color: black;
+  display: inline-block;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.21;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

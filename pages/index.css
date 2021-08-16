@@ -34,3 +34,6 @@
 /* footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyrighs/footer__copyrighs.css);
+/* gallery */
+@import url(../blocks/gallery/__panel/gallery__panel.css);
+
