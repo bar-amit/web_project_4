@@ -9,3 +9,17 @@
   flex-direction: column;
   align-items: center;
 }
+
+@media screen and (max-width: 768px) {
+  .page {
+    padding-top: 37px;
+    padding-bottom: 45px;
+  }
+}
+
+@media screen and (max-width: 476px) {
+  .page {
+    padding-top: 28px;
+    padding-bottom: 36px;
+  }
+}
