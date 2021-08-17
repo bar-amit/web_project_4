@@ -29,13 +29,11 @@
 @import url(../blocks/gallery/__image/gallery__image.css);
 @import url(../blocks/gallery/__title/gallery__title.css);
 @import url(../blocks/gallery/__like-button/gallery__like-button.css);
-
+@import url(../blocks/gallery/__panel/gallery__panel.css);
 
 /* footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyrighs/footer__copyrighs.css);
-/* gallery */
-@import url(../blocks/gallery/__panel/gallery__panel.css);
 
 /* popup */
 @import url(../blocks/popup/popup.css);
@@ -48,3 +46,9 @@
 /* overlay */
 @import url(../blocks/overlay/overlay.css);
 
+
+/* modifiers */
+@import url(../blocks/overlay/_visibility/overlay_visibility_hidden.css);
+@import url(../blocks/overlay/_visibility/overlay_visibility_visible.css);
+@import url(../blocks/popup/_visability/popup_visibility_hidden.css);
+@import url(../blocks/popup/_visability/popup_visibility_visible.css);
