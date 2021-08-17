@@ -1,3 +1,19 @@
 .gallery__like-button {
   width: 21px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: white;
+  background-image: url(../../../images/gallery__like-button.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.gallery__like-button:hover {
+  background-image: url(../../../images/gallery__like-button_mode_hover.svg);
+  cursor: pointer;
+}
+
+.gallery__like-button:active {
+  background-image: url(../../../images/gallery__like-button_mode_active.svg);
 }
