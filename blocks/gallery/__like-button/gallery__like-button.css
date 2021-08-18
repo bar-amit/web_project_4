@@ -10,7 +10,7 @@
 }
 
 .gallery__like-button:hover {
-  background-image: url(../../../images/gallery__like-button_mode_hover.svg);
+  opacity: 0.5;
   cursor: pointer;
 }
 
