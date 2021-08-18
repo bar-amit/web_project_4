@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   justify-self: flex-end;
-  background-color: black;
+  background-color: transparent;
   border: solid 2px white;
   background-image: url(../../../images/profile__add-button.svg);
   background-position: center;
@@ -14,9 +14,8 @@
 }
 
 .profile__add-button:hover {
-  border: solid 2px rgba(255, 255, 255, 0.6);
   cursor: pointer;
-  background-image: url(../../../images/profile__add-button_hover.svg);
+  opacity: 0.6;
 }
 
 
@@ -32,9 +31,5 @@
     grid-column: 1/2;
     width: 100%;
     background-image: url(../../../images/profile__add-button_small.svg);
-  }
-
-  .profile__add-button:hover {
-    background-image: url(../../../images/profile__add-button_hover_small.svg);
   }
 }
