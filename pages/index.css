@@ -35,17 +35,13 @@
 
 /* popup */
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__edit-profile/popup__edit-profile.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__save-button/popup__save-button.css);
 
-/* overlay */
-@import url(../blocks/overlay/overlay.css);
 
 /* modifiers */
-@import url(../blocks/overlay/_visibility/overlay_visibility_hidden.css);
-@import url(../blocks/overlay/_visibility/overlay_visibility_visible.css);
-@import url(../blocks/popup/_visability/popup_visibility_hidden.css);
-@import url(../blocks/popup/_visability/popup_visibility_visible.css);
+@import url(../blocks/popup/_visible/popup_visible.css);
