@@ -8,6 +8,7 @@
   justify-self: flex-end;
   background-color: transparent;
   border: solid 2px white;
+  border-radius: 2px;
   background-image: url(../../../images/profile__add-button.svg);
   background-position: center;
   background-repeat: no-repeat;
