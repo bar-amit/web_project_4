@@ -13,7 +13,7 @@
 }
 
 .popup__close-button:hover {
-  background-image: url(../../../images/popup__close-button_hover.svg);
+  opacity: 0.6;
   cursor: pointer;
 }
 
@@ -31,9 +31,5 @@
     background-image: url(../../../images/popup__close-button_small.svg);
     top: -44px;
     right: 0;
-  }
-
-  .popup__close-button:hover {
-    background-image: url(../../../images/popup__close-button_hover_small.svg);
   }
 }
