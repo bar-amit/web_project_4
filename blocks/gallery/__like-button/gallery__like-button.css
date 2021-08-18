@@ -15,5 +15,6 @@
 }
 
 .gallery__like-button:active {
+  opacity: 1;
   background-image: url(../../../images/gallery__like-button_mode_active.svg);
 }
