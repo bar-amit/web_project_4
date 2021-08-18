@@ -6,8 +6,8 @@ let closeButton = document.querySelector('.popup__close-button');
 let popup = document.querySelector('.popup');
 
 // Let's get the input elements in the DOM
-let nameInput = document.querySelector('.popup__input[name="name"]');
-let bioInput = document.querySelector('.popup__input[name="bio"]');
+let nameInput = document.querySelector('.popup__input_name');
+let bioInput = document.querySelector('.popup__input_bio');
 
 // Select elements where the field values will be entered
 let profileName = document.querySelector('.profile__name');
@@ -23,13 +23,9 @@ function handleClose() {
 // Edit click handler
 function handleEdit() {
 
-  // Let's get the name's and bio's current text
-  let nameText = profileName.textContent;
-  let bioText = profileBio.textContent;
-
-  // Let's finally fill the form
-  nameInput.value = nameText;
-  bioInput.value = bioText;
+  // Let's get the name's and bio's current text and fill the form
+  nameInput.value = profileName.textContent;
+  bioInput.value = profileBio.textContent;
 
   // Now, let's show to the world our popup
   popup.classList.add('popup_visible');
@@ -46,12 +42,9 @@ function handleFormSubmit(evt) {
   // We'll explain it in more detail later.
 
   // Get the values of each field from the corresponding value property
-  let newName = nameInput.value;
-  let newBio = bioInput.value;
-
   // Insert new values using the textContent property of the querySelector() method
-  profileName.textContent = newName;
-  profileBio.textContent = newBio;
+  profileName.textContent = nameInput.value;
+  profileBio.textContent = bioInput.value;
 
   // Our work here is done, why won't we close that pop-up then?
   handleClose();
