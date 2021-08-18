@@ -13,7 +13,7 @@ The project is structured with BEM.
 
 Some other technologies used in this project: css-flex, css-grid, html-forms and media queries.
 
-[Checkout the project on Github Pages!]('https://bar-amit.github.io/web_project_4/')
+[Checkout the project on Github Pages!](https://bar-amit.github.io/web_project_4/)
 
 **What's next?**
 
