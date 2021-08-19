@@ -1,17 +1,25 @@
 // Let's find the buttons in the DOM
 let editButton = document.querySelector('.profile__edit-button');
-let closeButton = document.querySelector('.popup__close-button');
-
-// Let's find the element we want to hide and show
-let popup = document.querySelector('.popup');
+let closeButtons = document.querySelectorAll('.popup__close-button');
+let addButton = document.querySelector('.profile__add-button');
 
 // Let's get the input elements in the DOM
 let nameInput = document.querySelector('.popup__input_type_name');
 let bioInput = document.querySelector('.popup__input_type_bio');
+let titleInput = document.querySelector('.popup__input_type_title');
+let linkInput = document.querySelector('.popup__input_type_link');
 
 // Select elements where the field values will be entered
 let profileName = document.querySelector('.profile__name');
 let profileBio = document.querySelector('.profile__bio');
+
+// Popup elements
+let popupEdit = document.querySelector('.popup_name_edit-profile');
+let popupNew = document.querySelector('.popup_name_new-place')
+
+// Let's find the forms in the DOM
+let formProfile = document.querySelector('.popup__form_name_edit-profile');
+let formPlace = document.querySelector('.popup__form_name_new-place');
 
 // Cards container
 let cardsContainer = document.querySelector('.gallery__container');
@@ -20,10 +28,15 @@ let cardsContainer = document.querySelector('.gallery__container');
 let cardTemplate = document.querySelector('.card__template').content;
 
 // Close click handler
-function handleClose() {
+function handleClose(e) {
 
   // Now, let's hide
-  popup.classList.remove('popup_visible');
+  e.target.closest('.popup').classList.remove('popup_visible');
+}
+
+// Add click handler
+function handleAdd() {
+  popupNew.classList.add('popup_visible');
 }
 
 // Edit click handler
@@ -34,15 +47,12 @@ function handleEdit() {
   bioInput.value = profileBio.textContent;
 
   // Now, let's show to the world our popup
-  popup.classList.add('popup_visible');
+  popupEdit.classList.add('popup_visible');
 }
-
-// Let's find the form in the DOM
-let formElement = document.querySelector('.popup__edit-profile');
 
 // Next is the form submit handler, though
 // it won't submit anywhere just yet
-function handleFormSubmit(evt) {
+function handleProfileSubmit(evt) {
   evt.preventDefault(); // This line stops the browser from submitting the form in the default way.
   // Having done so, we can define our own way of submitting the form.
   // We'll explain it in more detail later.
@@ -53,7 +63,15 @@ function handleFormSubmit(evt) {
   profileBio.textContent = bioInput.value;
 
   // Our work here is done, why won't we close that pop-up then?
-  handleClose();
+  evt.target.closest('.popup').classList.remove('popup_visible');
+}
+
+function handlePlaceSubmit(evt) {
+  evt.preventDefault();
+
+  addCard({name: titleInput.value, link: linkInput.value});
+
+  evt.target.closest('.popup').classList.remove('popup_visible');
 }
 
 // Cards' data:
@@ -101,6 +119,8 @@ function addCard(card){
 initialCards.forEach(card=>addCard(card));
 
 // Connect the event handlers to the elements:
-formElement.addEventListener('submit', handleFormSubmit);
-closeButton.addEventListener('click', handleClose);
+formProfile.addEventListener('submit', handleProfileSubmit);
+formPlace.addEventListener('submit', handlePlaceSubmit);
+closeButtons.forEach(button=>button.addEventListener('click', handleClose));
 editButton.addEventListener('click', handleEdit);
+addButton.addEventListener('click', handleAdd);

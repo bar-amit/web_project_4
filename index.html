@@ -34,15 +34,26 @@
       <p class="footer__copyrighs">&#169; 2021 Around The U.S.</p>
     </footer>
 
-    <div class="popup">
+    <div class="popup popup_name_edit-profile">
       <div class="popup__container">
         <button class="popup__close-button" type="button" aria-label="close"></button>
         <h2 class="popup__title">Edit profile</h2>
-        <form class="popup__edit-profile" name="edit-profile">
+        <form class="popup__form popup__form_name_edit-profile" name="edit-profile">
           <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Name">
           <input class="popup__input popup__input_type_bio" type="text" name="bio" placeholder="About me">
           <button class="popup__save-button" type="submit">Save</button>
         </form>
+      </div>
+    </div>
+
+    <div class="popup popup_name_new-place">
+      <div class="popup__container">
+        <button class="popup__close-button" type="button" aria-label="close"></button>
+        <h2 class="popup__title">New Place</h2>
+        <form class="popup__form popup__form_name_new-place" name="new-place">
+          <input class="popup__input popup__input_type_title" type="text" name="title" placeholder="Title">
+          <input class="popup__input popup__input_type_link" type="text" name="link" placeholder="Image link">
+          <button class="popup__save-button" type="submit">Create</button>
       </div>
     </div>
 
