@@ -6,8 +6,8 @@ let closeButton = document.querySelector('.popup__close-button');
 let popup = document.querySelector('.popup');
 
 // Let's get the input elements in the DOM
-let nameInput = document.querySelector('.popup__input_name');
-let bioInput = document.querySelector('.popup__input_bio');
+let nameInput = document.querySelector('.popup__input_type_name');
+let bioInput = document.querySelector('.popup__input_type_bio');
 
 // Select elements where the field values will be entered
 let profileName = document.querySelector('.profile__name');
