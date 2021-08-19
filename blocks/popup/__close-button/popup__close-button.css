@@ -16,20 +16,3 @@
   opacity: 0.6;
   cursor: pointer;
 }
-
-@media screen and (max-width: 558px) {
-  .popup__close-button {
-    top: -60px;
-    right: 0;
-  }
-}
-
-@media screen and (max-width: 508px) {
-  .popup__close-button {
-    width: 26px;
-    height: 26px;
-    background-image: url(../../../images/popup__close-button_small.svg);
-    top: -44px;
-    right: 0;
-  }
-}

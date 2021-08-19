@@ -33,6 +33,7 @@
 @import url(../blocks/card/__panel/card__panel.css);
 @import url(../blocks/card/__title/card__title.css);
 @import url(../blocks/card/__like-button/card__like-button.css);
+@import url(../blocks/card/__delete-button/card__delete-button.css);
 
 /* footer */
 @import url(../blocks/footer/footer.css);
@@ -46,12 +47,11 @@
 @import url(../blocks/popup/__form/popup__edit-profile.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__save-button/popup__save-button.css);
-
+@import url(../blocks/popup/__picture-container/popup__picture-container.css);
+@import url(../blocks/popup/__picture/popup__picture.css);
+@import url(../blocks/popup/__picture-title/popup__picture-title.css);
 
 /* modifiers */
 @import url(../blocks/popup/_visible/popup_visible.css);
 @import url(../blocks/card/__like-button/_active/card__like-button_active.css);
-
-/* card */
-@import url(../blocks/card/__delete-button/card__delete-button.css);
-
+@import url(../blocks/popup/__close-button/_shrink/popup__close-button_shrink.css);

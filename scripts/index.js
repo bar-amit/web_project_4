@@ -15,7 +15,8 @@ let profileBio = document.querySelector('.profile__bio');
 
 // Popup elements
 let popupEdit = document.querySelector('.popup_name_edit-profile');
-let popupNew = document.querySelector('.popup_name_new-place')
+let popupNew = document.querySelector('.popup_name_new-place');
+let popupPicture = document.querySelector('.popup_name_picture');
 
 // Let's find the forms in the DOM
 let formProfile = document.querySelector('.popup__form_name_edit-profile');
@@ -122,10 +123,25 @@ function addCard(card){
   cardTitle.textContent = card.name;
   cardImage.setAttribute('src',card.link);
   cardImage.setAttribute('alt',card.name);
+  cardImage.addEventListener('click', getPictureEventHandle(card));
   cardLikeButton.addEventListener('click',handleLike);
   cardDeleteButton.addEventListener('click',handleDelete);
 
   cardsContainer.prepend(cardElement);
+}
+
+function getPictureEventHandle(card) {
+  let pictureHandle = function() {
+    let pictureTitle = popupPicture.querySelector('.popup__picture-title');
+    let pictureImage = popupPicture.querySelector('.popup__picture');
+
+    pictureTitle.textContent = card.name;
+    pictureImage.setAttribute('src',card.link);
+    pictureImage.setAttribute('alt',card.name);
+
+    popupPicture.classList.add('popup_visible');
+  }
+  return pictureHandle;
 }
 
 // Load cards
