@@ -39,6 +39,11 @@ function handleAdd() {
   popupNew.classList.add('popup_visible');
 }
 
+// Like click handle
+function handleLike(e) {
+  e.target.classList.toggle('card__like-button_active');
+}
+
 // Edit click handler
 function handleEdit() {
 
@@ -107,10 +112,12 @@ function addCard(card){
 
   let cardTitle = cardElement.querySelector('.card__title');
   let cardImage = cardElement.querySelector('.card__image');
+  let cardLikeButton = cardElement.querySelector('.card__like-button')
 
   cardTitle.textContent = card.name;
   cardImage.setAttribute('src',card.link);
   cardImage.setAttribute('alt',card.name);
+  cardLikeButton.addEventListener('click',handleLike)
 
   cardsContainer.prepend(cardElement);
 }
