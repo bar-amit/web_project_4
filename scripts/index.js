@@ -11,7 +11,13 @@ let bioInput = document.querySelector('.popup__input_type_bio');
 
 // Select elements where the field values will be entered
 let profileName = document.querySelector('.profile__name');
-let profileBio = document.querySelector('.profile__bio')
+let profileBio = document.querySelector('.profile__bio');
+
+// Cards container
+let cardsContainer = document.querySelector('.gallery__container');
+
+// Template
+let cardTemplate = document.querySelector('.card__template').content;
 
 // Close click handler
 function handleClose() {
@@ -50,7 +56,51 @@ function handleFormSubmit(evt) {
   handleClose();
 }
 
-// Connect the handlers to the elements:
+// Cards' data:
+const initialCards = [
+  {
+    name: "Yosemite Valley",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+  },
+  {
+    name: "Lake Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg"
+  }
+];
+
+function addCard(card){
+  let cardElement = cardTemplate.querySelector('.card').cloneNode(true);
+
+  let cardTitle = cardElement.querySelector('.card__title');
+  let cardImage = cardElement.querySelector('.card__image');
+
+  cardTitle.textContent = card.name;
+  cardImage.setAttribute('src',card.link);
+  cardImage.setAttribute('alt',card.name);
+
+  cardsContainer.prepend(cardElement);
+}
+
+// Load cards
+initialCards.forEach(card=>addCard(card));
+
+// Connect the event handlers to the elements:
 formElement.addEventListener('submit', handleFormSubmit);
 closeButton.addEventListener('click', handleClose);
 editButton.addEventListener('click', handleEdit);
