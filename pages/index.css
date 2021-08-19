@@ -52,3 +52,6 @@
 @import url(../blocks/popup/_visible/popup_visible.css);
 @import url(../blocks/card/__like-button/_active/card__like-button_active.css);
 
+/* card */
+@import url(../blocks/card/__delete-button/card__delete-button.css);
+
