@@ -79,6 +79,10 @@ function handlePlaceSubmit(evt) {
   evt.target.closest('.popup').classList.remove('popup_visible');
 }
 
+function handleDelete(e) {
+  e.target.closest('.card').remove();
+}
+
 // Cards' data:
 const initialCards = [
   {
@@ -112,12 +116,14 @@ function addCard(card){
 
   let cardTitle = cardElement.querySelector('.card__title');
   let cardImage = cardElement.querySelector('.card__image');
-  let cardLikeButton = cardElement.querySelector('.card__like-button')
+  let cardLikeButton = cardElement.querySelector('.card__like-button');
+  let cardDeleteButton = cardElement.querySelector('.card__delete-button');
 
   cardTitle.textContent = card.name;
   cardImage.setAttribute('src',card.link);
   cardImage.setAttribute('alt',card.name);
-  cardLikeButton.addEventListener('click',handleLike)
+  cardLikeButton.addEventListener('click',handleLike);
+  cardDeleteButton.addEventListener('click',handleDelete);
 
   cardsContainer.prepend(cardElement);
 }
