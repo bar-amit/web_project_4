@@ -13,7 +13,7 @@
 
 @media screen and (max-width: 768px) {
   .page {
-    height: calc(100% - 45px - 37px);
+    min-height: calc(100% - 45px - 37px);
     padding-top: 37px;
     padding-bottom: 45px;
   }
@@ -21,7 +21,7 @@
 
 @media screen and (max-width: 476px) {
   .page {
-    height: calc(100% - 28px - 36px);
+    min-height: calc(100% - 28px - 36px);
     padding-top: 28px;
     padding-bottom: 36px;
   }
