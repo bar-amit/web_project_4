@@ -3,6 +3,7 @@
 ### Overview
 
 * About the project
+* What's new?
 * What's next?
 
 **About the project**
@@ -15,6 +16,16 @@ Some other technologies used in this project: css-flex, css-grid, html-forms and
 
 [Checkout the project on Github Pages!](https://bar-amit.github.io/web_project_4/)
 
+**What's new?**
+
+In my latest update I've added:
+
+* Add/remove photos functionality.
+* Like button functionality.
+* Smooth transition to the pop-up windows.
+* A new Picture Pop-up.
+* A new delete button for the cards.
+
 **What's next?**
 
-Next is to finish the like button and ability to add/remove photos.
+Next is to add backend side and more functions.
