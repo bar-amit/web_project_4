@@ -38,7 +38,7 @@ const cardTemplate = document.querySelector('.card__template').content;
 
 // Close click handler
 function handleClose(e) {
-  e.target.closest('.popup').classList.remove('popup_visible');
+  closePopup(e.target.closest('.popup'));
 }
 
 // Delete click handler
@@ -51,9 +51,14 @@ function handleLike(e) {
   e.target.classList.toggle('card__like-button_active');
 }
 
-// Add click handler
-function handleAddButtonClick() {
-  popupNew.classList.add('popup_visible');
+// Popup open helper function
+function openPopup(popupElement){
+  popupElement.classList.add('popup_visible');
+}
+
+// Popup close helper function
+function closePopup(popupElement){
+  popupElement.classList.remove('popup_visible');
 }
 
 // Edit click handler
@@ -62,7 +67,7 @@ function handleEditButtonClick() {
   nameInput.value = profileName.textContent;
   bioInput.value = profileBio.textContent;
 
-  popupEdit.classList.add('popup_visible');
+  openPopup(popupEdit);
 }
 
 // Profile submit handler
@@ -73,16 +78,21 @@ function handleProfileSubmit(evt) {
   profileName.textContent = nameInput.value;
   profileBio.textContent = bioInput.value;
 
-  evt.target.closest('.popup').classList.remove('popup_visible');
+  closePopup(popupEdit);
+}
+
+// Add click handler
+function handleAddButtonClick() {
+  openPopup(popupNew);
 }
 
 // Place submit handler
 function handlePlaceSubmit(evt) {
   evt.preventDefault();
 
-  addCard({name: titleInput.value, link: linkInput.value});
+  cardsContainer.prepend(newCard({name: titleInput.value, link: linkInput.value}));
 
-  evt.target.closest('.popup').classList.remove('popup_visible');
+  closePopup(popupNew);
 }
 
 /*
@@ -90,7 +100,7 @@ function handlePlaceSubmit(evt) {
 */
 
 // Add new card to gallery
-function addCard(card){
+function newCard(card){
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
 
   const cardTitle = cardElement.querySelector('.card__title');
@@ -105,7 +115,7 @@ function addCard(card){
   cardLikeButton.addEventListener('click',handleLike);
   cardDeleteButton.addEventListener('click',handleDelete);
 
-  cardsContainer.prepend(cardElement);
+  return cardElement;
 }
 
 // Create an event handler for each new card
@@ -124,7 +134,7 @@ function getPictureEventHandler(card) {
 }
 
 // Load cards
-initialCards.forEach(card=>addCard(card));
+initialCards.forEach(card=>cardsContainer.append(newCard(card)));
 
 /*
   Connect the event handlers to the elements
