@@ -52,12 +52,12 @@ function handleLike(e) {
 }
 
 // Add click handler
-function handleAdd() {
+function handleAddButtonClick() {
   popupNew.classList.add('popup_visible');
 }
 
 // Edit click handler
-function handleEdit() {
+function handleEditButtonClick() {
   // Fill the form with current values
   nameInput.value = profileName.textContent;
   bioInput.value = profileBio.textContent;
@@ -136,5 +136,5 @@ formPlace.addEventListener('submit', handlePlaceSubmit);
 
 // Buttons
 closeButtons.forEach(button=>button.addEventListener('click', handleClose));
-editButton.addEventListener('click', handleEdit);
-addButton.addEventListener('click', handleAdd);
+editButton.addEventListener('click', handleEditButtonClick);
+addButton.addEventListener('click', handleAddButtonClick);
