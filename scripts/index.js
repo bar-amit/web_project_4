@@ -40,11 +40,6 @@ const cardTemplate = document.querySelector('.card__template').content;
   Function handlers:
 */
 
-// Close click handler
-function handleClose(e) {
-  closePopup(e.target.closest('.popup'));
-}
-
 // Delete click handler
 function handleDelete(e) {
   e.target.closest('.card').remove();
@@ -129,7 +124,7 @@ function getPictureEventHandler(card) {
     pictureImage.setAttribute('src',card.link);
     pictureImage.setAttribute('alt',card.name);
 
-    popupPicture.classList.add('popup_visible');
+    openPopup(popupPicture);
   }
   return handlePicture;
 }
@@ -146,6 +141,6 @@ formProfile.addEventListener('submit', handleProfileSubmit);
 formPlace.addEventListener('submit', handlePlaceSubmit);
 
 // Buttons
-closeButtons.forEach(button=>button.addEventListener('click', handleClose));
+closeButtons.forEach(button=>button.addEventListener('click', function(){closePopup(button.closest('.popup'))}));
 editButton.addEventListener('click', handleEditButtonClick);
 addButton.addEventListener('click', handleAddButtonClick);
