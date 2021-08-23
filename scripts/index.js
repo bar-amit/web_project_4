@@ -22,6 +22,10 @@ const popupEdit = document.querySelector('.popup_name_edit-profile');
 const popupNew = document.querySelector('.popup_name_new-place');
 const popupPicture = document.querySelector('.popup_name_picture');
 
+// Picture
+const pictureTitle = popupPicture.querySelector('.popup__picture-title');
+const pictureImage = popupPicture.querySelector('.popup__picture');
+
 // Forms
 const formProfile = document.querySelector('.popup__form_name_edit-profile');
 const formPlace = document.querySelector('.popup__form_name_new-place');
@@ -121,9 +125,6 @@ function newCard(card){
 // Create an event handler for each new card
 function getPictureEventHandler(card) {
   const handlePicture = function() {
-    const pictureTitle = popupPicture.querySelector('.popup__picture-title');
-    const pictureImage = popupPicture.querySelector('.popup__picture');
-
     pictureTitle.textContent = card.name;
     pictureImage.setAttribute('src',card.link);
     pictureImage.setAttribute('alt',card.name);
