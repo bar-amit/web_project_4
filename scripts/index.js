@@ -67,6 +67,13 @@ function closePopup(popupElement){
   popupElement.classList.remove('popup_visible');
 }
 
+// Overlay click handler
+function handleOverlayClick(e){
+  if(e.target.classList.contains('popup')){
+    closePopup(e.target);
+  }
+}
+
 // Edit click handler
 function handleEditButtonClick() {
   // Fill the form with current values
@@ -147,6 +154,11 @@ initialCards.forEach(card=>cardsContainer.append(newCard(card)));
 /*
   Connect the event handlers to the elements
 */
+
+// Popups
+[popupEdit, popupNew, popupPicture].forEach(popup=>{
+  popup.addEventListener('click', handleOverlayClick);
+})
 
 // Forms
 formProfile.addEventListener('submit', handleProfileSubmit);
