@@ -2,6 +2,13 @@
   DOM elements:
 */
 
+const formSelector = ".popup__form";
+const inputSelector = ".popup__input";
+const submitButtonSelector = ".popup__save-button";
+const inactiveButtonClass = "popup__save-button_disabled";
+const inputErrorClass = "popup__input_error";
+const errorClass = "popup__input-error_visible";
+
 // Buttons
 const editButton = document.querySelector('.profile__edit-button');
 const closeButtons = document.querySelectorAll('.popup__close-button');
@@ -66,6 +73,7 @@ function handleEditButtonClick() {
   nameInput.value = profileName.textContent;
   bioInput.value = profileBio.textContent;
 
+  resetValidation(popupEdit, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass);
   openPopup(popupEdit);
 }
 
@@ -82,6 +90,10 @@ function handleProfileSubmit(evt) {
 
 // Add click handler
 function handleAddButtonClick() {
+  titleInput.value = '';
+  linkInput.value = '';
+
+  resetValidation(popupNew, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass);
   openPopup(popupNew);
 }
 
@@ -144,3 +156,16 @@ formPlace.addEventListener('submit', handlePlaceSubmit);
 closeButtons.forEach(button=>button.addEventListener('click', function(){closePopup(button.closest('.popup'))}));
 editButton.addEventListener('click', handleEditButtonClick);
 addButton.addEventListener('click', handleAddButtonClick);
+
+/*
+  Validation
+*/
+
+enableValidation({
+  formSelector,
+  inputSelector,
+  submitButtonSelector,
+  inactiveButtonClass,
+  inputErrorClass,
+  errorClass
+});
