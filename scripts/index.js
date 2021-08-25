@@ -28,6 +28,7 @@ const profileBio = document.querySelector('.profile__bio');
 const popupEdit = document.querySelector('.popup_name_edit-profile');
 const popupNew = document.querySelector('.popup_name_new-place');
 const popupPicture = document.querySelector('.popup_name_picture');
+const popups = [popupEdit, popupNew, popupPicture];
 
 // Picture
 const pictureTitle = popupPicture.querySelector('.popup__picture-title');
@@ -71,6 +72,15 @@ function closePopup(popupElement){
 function handleOverlayClick(e){
   if(e.target.classList.contains('popup')){
     closePopup(e.target);
+  }
+}
+
+// Escape key handler
+function handleEscapeKey(e){
+  if(e.key==='Escape'){
+    popups.forEach(popup=>{
+      closePopup(popup);
+    });
   }
 }
 
@@ -155,8 +165,11 @@ initialCards.forEach(card=>cardsContainer.append(newCard(card)));
   Connect the event handlers to the elements
 */
 
+// Keyboard events
+document.addEventListener('keydown', handleEscapeKey);
+
 // Popups
-[popupEdit, popupNew, popupPicture].forEach(popup=>{
+popups.forEach(popup=>{
   popup.addEventListener('click', handleOverlayClick);
 })
 
