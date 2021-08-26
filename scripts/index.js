@@ -50,11 +50,13 @@ const cardTemplate = document.querySelector('.card__template').content;
 
 // Delete click handler
 function handleDelete(e) {
+  e.stopPropagation();
   e.target.closest('.card').remove();
 }
 
 // Like click handle
 function handleLike(e) {
+  e.stopPropagation();
   e.target.classList.toggle('card__like-button_active');
 }
 
@@ -86,6 +88,8 @@ function handleEscapeKey(e){
 
 // Edit click handler
 function handleEditButtonClick() {
+  e.stopPropagation();
+
   // Fill the form with current values
   nameInput.value = profileName.textContent;
   bioInput.value = profileBio.textContent;
@@ -107,6 +111,8 @@ function handleProfileSubmit(evt) {
 
 // Add click handler
 function handleAddButtonClick() {
+  e.stopPropagation();
+
   titleInput.value = '';
   linkInput.value = '';
 
@@ -121,6 +127,11 @@ function handlePlaceSubmit(evt) {
   cardsContainer.prepend(newCard({name: titleInput.value, link: linkInput.value}));
 
   closePopup(popupNew);
+}
+
+const handleSubmit = {
+  "new-place": handlePlaceSubmit,
+  "edit-profile": handleProfileSubmit
 }
 
 /*
@@ -168,14 +179,14 @@ initialCards.forEach(card=>cardsContainer.append(newCard(card)));
 // Keyboard events
 document.addEventListener('keydown', handleEscapeKey);
 
+// Forms
+formPlace.addEventListener('submit',e=> e.preventDefault());
+formProfile.addEventListener('submit',e=> e.preventDefault());
+
 // Popups
 popups.forEach(popup=>{
   popup.addEventListener('click', handleOverlayClick);
 })
-
-// Forms
-formProfile.addEventListener('submit', handleProfileSubmit);
-formPlace.addEventListener('submit', handlePlaceSubmit);
 
 // Buttons
 closeButtons.forEach(button=>button.addEventListener('click', function(){closePopup(button.closest('.popup'))}));

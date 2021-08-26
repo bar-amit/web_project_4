@@ -4,25 +4,25 @@ function enableValidation({formSelector, inputSelector, submitButtonSelector, in
       const inputElements = form.querySelectorAll(inputSelector);
       const buttonElement = form.querySelector(submitButtonSelector);
 
-      setEventListeners(inputElements, buttonElement, inactiveButtonClass, inputErrorClass, errorClass);
+      setEventListeners(form, inputElements, buttonElement, inactiveButtonClass, inputErrorClass, errorClass);
     });
 }
 
-function setEventListeners(inputElements, buttonElement, inactiveButtonClass, inputErrorClass, errorClass){
+function setEventListeners(form, inputElements, buttonElement, inactiveButtonClass, inputErrorClass, errorClass){
   Array.from(inputElements).forEach(input => {
     input.addEventListener('input', function(e){
       isValid(e.target,e.target.nextElementSibling,errorClass,inputErrorClass);
-      setButtonState(inputElements, buttonElement, inactiveButtonClass);
+      setButtonState(form, inputElements, buttonElement, inactiveButtonClass);
     })
   });
 }
 
-function setButtonState(inputElements, buttonElement, inactiveButtonClass){
+function setButtonState(form, inputElements, buttonElement, inactiveButtonClass){
   if(hasInvalidInput(inputElements)){
-    disableButton(buttonElement,inactiveButtonClass);
+    disableButton(form, buttonElement,inactiveButtonClass);
   }
   else{
-    enableButton(buttonElement,inactiveButtonClass);
+    enableButton(form, buttonElement,inactiveButtonClass);
   }
 }
 
@@ -30,12 +30,14 @@ function hasInvalidInput(inputs){
   return Array.from(inputs).some(input=>!input.validity.valid);
 }
 
-function disableButton(button, inactiveClass){
+function disableButton(form, button, inactiveClass){
   button.classList.add(inactiveClass);
+  form.removeEventListener('submit', handleSubmit[form.name]);
 }
 
-function enableButton(button, inactiveClass){
+function enableButton(form, button, inactiveClass){
   button.classList.remove(inactiveClass);
+  form.addEventListener('submit', handleSubmit[form.getAttribute('name')]);
 }
 
 function isValid(input, error, visibleErrorClass, inputErrorClass){
@@ -64,5 +66,5 @@ function resetValidation(formElement, inputSelector, buttonSelector, inactiveBut
   Array.from(inputs).forEach(input=>{
     hideError(input.nextElementSibling,errorClass,input,inputErrorClass);
   });
-  disableButton(formElement.querySelector(buttonSelector), inactiveButtonClass);
+  disableButton(formElement, formElement.querySelector(buttonSelector), inactiveButtonClass);
 }
