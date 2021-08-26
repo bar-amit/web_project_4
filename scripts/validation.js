@@ -11,7 +11,7 @@ function enableValidation({formSelector, inputSelector, submitButtonSelector, in
 function setEventListeners(form, inputElements, buttonElement, inactiveButtonClass, inputErrorClass, errorClass){
   Array.from(inputElements).forEach(input => {
     input.addEventListener('input', function(e){
-      isValid(e.target,e.target.nextElementSibling,errorClass,inputErrorClass);
+      isValid(e.target, form.querySelector(`#${e.target.id}-error`), errorClass, inputErrorClass);
       setButtonState(form, inputElements, buttonElement, inactiveButtonClass);
     })
   });
@@ -64,7 +64,7 @@ function showError(error,visibleClass,errorMessage,input,inputErrorClass){
 function resetValidation(formElement, inputSelector, buttonSelector, inactiveButtonClass, inputErrorClass, errorClass){
   const inputs = formElement.querySelectorAll(inputSelector);
   Array.from(inputs).forEach(input=>{
-    hideError(input.nextElementSibling,errorClass,input,inputErrorClass);
+    hideError(formElement.querySelector(`#${input.id}-error`),errorClass,input,inputErrorClass);
   });
   disableButton(formElement, formElement.querySelector(buttonSelector), inactiveButtonClass);
 }
