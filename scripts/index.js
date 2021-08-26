@@ -87,7 +87,7 @@ function handleEscapeKey(e){
 }
 
 // Edit click handler
-function handleEditButtonClick() {
+function handleEditButtonClick(e) {
   e.stopPropagation();
 
   // Fill the form with current values
@@ -110,7 +110,7 @@ function handleProfileSubmit(evt) {
 }
 
 // Add click handler
-function handleAddButtonClick() {
+function handleAddButtonClick(e) {
   e.stopPropagation();
 
   titleInput.value = '';
