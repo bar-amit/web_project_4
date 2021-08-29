@@ -45,8 +45,13 @@ const cardsContainer = document.querySelector('.gallery__container');
 const cardTemplate = document.querySelector('.card__template').content;
 
 /*
-  Function handlers:
+  Event handlers:
 */
+
+// Close click handler
+function closeButtonHandle(e){
+  closePopup(e.target.closest('.popup'));
+}
 
 // Delete click handler
 function handleDelete(e) {
@@ -54,7 +59,7 @@ function handleDelete(e) {
   e.target.closest('.card').remove();
 }
 
-// Like click handle
+// Like click handler
 function handleLike(e) {
   e.stopPropagation();
   e.target.classList.toggle('card__like-button_active');
@@ -62,11 +67,13 @@ function handleLike(e) {
 
 // Popup open helper function
 function openPopup(popupElement){
+  addPopupEvents(popupElement)
   popupElement.classList.add('popup_visible');
 }
 
 // Popup close helper function
 function closePopup(popupElement){
+  removePopupEvents(popupElement);
   popupElement.classList.remove('popup_visible');
 }
 
@@ -80,9 +87,7 @@ function handleOverlayClick(e){
 // Escape key handler
 function handleEscapeKey(e){
   if(e.key==='Escape'){
-    popups.forEach(popup=>{
-      closePopup(popup);
-    });
+    closePopup(e.currentTarget);
   }
 }
 
@@ -98,17 +103,6 @@ function handleEditButtonClick(e) {
   openPopup(popupEdit);
 }
 
-// Profile submit handler
-function handleProfileSubmit(evt) {
-  evt.preventDefault();
-
-  // Get the values of each field and insert new values
-  profileName.textContent = nameInput.value;
-  profileBio.textContent = bioInput.value;
-
-  closePopup(popupEdit);
-}
-
 // Add click handler
 function handleAddButtonClick(e) {
   e.stopPropagation();
@@ -120,18 +114,35 @@ function handleAddButtonClick(e) {
   openPopup(popupNew);
 }
 
-// Place submit handler
-function handlePlaceSubmit(evt) {
-  evt.preventDefault();
-
+// Place form data handler
+function handlePlaceFormData() {
   cardsContainer.prepend(newCard({name: titleInput.value, link: linkInput.value}));
 
   closePopup(popupNew);
 }
 
-const handleSubmit = {
-  "new-place": handlePlaceSubmit,
-  "edit-profile": handleProfileSubmit
+// Profile form data handler
+function handleProfileFormData() {
+  // Get the values of each field and insert new values
+  profileName.textContent = nameInput.value;
+  profileBio.textContent = bioInput.value;
+
+  closePopup(popupEdit);
+}
+
+const handleFormData = {
+  "new-place": handlePlaceFormData,
+  "edit-profile": handleProfileFormData
+}
+
+// Form submit Handler
+function handleSubmit(e){
+  e.preventDefault();
+
+  const form = e.target;
+  if(!form.querySelector(`.${inactiveButtonClass}`)){
+    handleFormData[form.getAttribute('name')]();
+  }
 }
 
 /*
@@ -176,20 +187,34 @@ initialCards.forEach(card=>cardsContainer.append(newCard(card)));
   Connect the event handlers to the elements
 */
 
-// Keyboard events
-document.addEventListener('keydown', handleEscapeKey);
-
-// Forms
-formPlace.addEventListener('submit',e=> e.preventDefault());
-formProfile.addEventListener('submit',e=> e.preventDefault());
-
 // Popups
-popups.forEach(popup=>{
-  popup.addEventListener('click', handleOverlayClick);
-})
+function addPopupEvents(popupElement){
+  const closeButton = popupElement.querySelector('.popup__close-button');
+  const formElement = popupElement.querySelector('.popup__form');
+
+  popupElement.addEventListener('click', handleOverlayClick);
+  popupElement.addEventListener('keydown', handleEscapeKey);
+  closeButton.addEventListener('click', closeButtonHandle);
+
+  if(formElement){
+    formElement.addEventListener('submit', handleSubmit);
+  }
+}
+
+function removePopupEvents(popupElement){
+  const closeButton = popupElement.querySelector('.popup__close-button');
+  const formElement = popupElement.querySelector('.popup__form');
+
+  popupElement.removeEventListener('click', handleOverlayClick);
+  popupElement.removeEventListener('keydown', handleEscapeKey);
+  closeButton.removeEventListener('click', closeButtonHandle);
+
+  if(formElement){
+    formElement.removeEventListener('submit', handleSubmit);
+  }
+}
 
 // Buttons
-closeButtons.forEach(button=>button.addEventListener('click', function(){closePopup(button.closest('.popup'))}));
 editButton.addEventListener('click', handleEditButtonClick);
 addButton.addEventListener('click', handleAddButtonClick);
 
