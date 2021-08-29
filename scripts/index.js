@@ -73,7 +73,7 @@ function closeButtonHandle(e){
 
 // Overlay click handler
 function handleOverlayClick(e){
-  if(e.target.classList.contains(popupSelector)){
+  if(e.target.classList.contains(activePopupClass)){
     closePopup(e.target);
   }
 }
