@@ -81,7 +81,7 @@ function handleOverlayClick(e){
 // Escape key handler
 function handleEscapeKey(e){
   if(e.key==='Escape'){
-    closePopup(document.querySelector(activePopupClass));
+    closePopup(document.querySelector(`.${activePopupClass}`));
   }
 }
 
