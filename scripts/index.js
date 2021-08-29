@@ -3,14 +3,23 @@
 */
 
 // Selectors
+const popupSelector = ".popup";
+const popupCloseButtonSelector = ".popup__close-button";
 const formSelector = ".popup__form";
 const inputSelector = ".popup__input";
 const submitButtonSelector = ".popup__save-button";
+const cardSelector = ".card";
+const cardTitleSelector = ".card__title";
+const cardImageSelector = ".card__image";
+const cardLikeSelector = ".card__like-button";
+const cardDeleteSelector = ".card__delete-button";
 
 // classes
+const activePopupClass = "popup_visible";
 const inactiveButtonClass = "popup__save-button_disabled";
 const inputErrorClass = "popup__input_error";
 const errorClass = "popup__input-error_visible";
+const activelikeButtonClass = "card__like-button_active";
 
 // Buttons
 const editButton = document.querySelector('.profile__edit-button');
@@ -48,23 +57,23 @@ const cardTemplate = document.querySelector('.card__template').content;
 // Popup open helper function
 function openPopup(popupElement){
   addPopupEvents(popupElement)
-  popupElement.classList.add('popup_visible');
+  popupElement.classList.add(activePopupClass);
 }
 
 // Popup close helper function
 function closePopup(popupElement){
   removePopupEvents(popupElement);
-  popupElement.classList.remove('popup_visible');
+  popupElement.classList.remove(activePopupClass);
 }
 
 // Close click handler
 function closeButtonHandle(e){
-  closePopup(e.target.closest('.popup'));
+  closePopup(e.target.closest(popupSelector));
 }
 
 // Overlay click handler
 function handleOverlayClick(e){
-  if(e.target.classList.contains('popup')){
+  if(e.target.classList.contains(popupSelector)){
     closePopup(e.target);
   }
 }
@@ -72,12 +81,12 @@ function handleOverlayClick(e){
 // Escape key handler
 function handleEscapeKey(e){
   if(e.key==='Escape'){
-    closePopup(document.querySelector('.popup_visible'));
+    closePopup(document.querySelector(activePopupClass));
   }
 }
 
 function addPopupEvents(popupElement){
-  const closeButton = popupElement.querySelector('.popup__close-button');
+  const closeButton = popupElement.querySelector(popupCloseButtonSelector);
   const formElement = popupElement.querySelector(formSelector);
 
   popupElement.addEventListener('click', handleOverlayClick);
@@ -90,7 +99,7 @@ function addPopupEvents(popupElement){
 }
 
 function removePopupEvents(popupElement){
-  const closeButton = popupElement.querySelector('.popup__close-button');
+  const closeButton = popupElement.querySelector(popupCloseButtonSelector);
   const formElement = popupElement.querySelector(formSelector);
 
   popupElement.removeEventListener('click', handleOverlayClick);
@@ -143,9 +152,9 @@ function handleSubmit(e){
 
 // Add new card to gallery
 function newCard(card){
-  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-  const cardTitle = cardElement.querySelector('.card__title');
-  const cardImage = cardElement.querySelector('.card__image');
+  const cardElement = cardTemplate.querySelector(cardSelector).cloneNode(true);
+  const cardTitle = cardElement.querySelector(cardTitleSelector);
+  const cardImage = cardElement.querySelector(cardImageSelector);
 
   addCardEvents(cardElement);
   cardTitle.textContent = card.name;
@@ -159,7 +168,7 @@ function newCard(card){
 function handleDelete(e) {
   e.stopPropagation();
 
-  const cardElement = e.target.closest('.card');
+  const cardElement = e.target.closest(cardSelector);
   removeCardEvents(cardElement)
   cardElement.remove();
 }
@@ -167,7 +176,7 @@ function handleDelete(e) {
 // Like click handler
 function handleLike(e) {
   e.stopPropagation();
-  e.target.classList.toggle('card__like-button_active');
+  e.target.classList.toggle(activelikeButtonClass);
 }
 
 // Picture click handler
@@ -183,9 +192,9 @@ function handlePictureClick(e) {
 
 // Add card events
 function addCardEvents(cardElement){
-  const cardImage = cardElement.querySelector('.card__image');
-  const cardLikeButton = cardElement.querySelector('.card__like-button');
-  const cardDeleteButton = cardElement.querySelector('.card__delete-button');
+  const cardImage = cardElement.querySelector(cardImageSelector);
+  const cardLikeButton = cardElement.querySelector(cardLikeSelector);
+  const cardDeleteButton = cardElement.querySelector(cardDeleteSelector);
 
   cardImage.addEventListener('click', handlePictureClick);
   cardLikeButton.addEventListener('click',handleLike);
@@ -195,9 +204,9 @@ function addCardEvents(cardElement){
 
 // Remove card events
 function removeCardEvents(cardElement){
-  const cardImage = cardElement.querySelector('.card__image');
-  const cardLikeButton = cardElement.querySelector('.card__like-button');
-  const cardDeleteButton = cardElement.querySelector('.card__delete-button');
+  const cardImage = cardElement.querySelector(cardImageSelector);
+  const cardLikeButton = cardElement.querySelector(cardLikeSelector);
+  const cardDeleteButton = cardElement.querySelector(cardDeleteSelector);
 
   cardImage.removeEventListener('click', handlePictureClick);
   cardLikeButton.removeEventListener('click',handleLike);
