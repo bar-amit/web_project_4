@@ -4,7 +4,6 @@
 
 // Selectors
 const popupSelector = ".popup";
-const popupCloseButtonSelector = ".popup__close-button";
 const formSelector = ".popup__form";
 const inputSelector = ".popup__input";
 const submitButtonSelector = ".popup__save-button";
@@ -21,9 +20,14 @@ const inputErrorClass = "popup__input_error";
 const errorClass = "popup__input-error_visible";
 const activelikeButtonClass = "card__like-button_active";
 
+// Forms
+const profileFormElement = document.querySelector('.popup__form_name_edit-profile');
+const pictureFormElement = document.querySelector('.popup__form_name_new-place');
+
 // Buttons
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
+const closeButtons = document.querySelectorAll('.popup__close-button');
 
 // Inputs
 const nameInput = document.querySelector('.popup__input_type_name');
@@ -67,7 +71,7 @@ function closePopup(popupElement){
 }
 
 // Close click handler
-function closeButtonHandle(e){
+function handleCloseButtonClick(e){
   closePopup(e.target.closest(popupSelector));
 }
 
@@ -85,30 +89,16 @@ function handleEscapeKey(e){
   }
 }
 
+// Add popup events
 function addPopupEvents(popupElement){
-  const closeButton = popupElement.querySelector(popupCloseButtonSelector);
-  const formElement = popupElement.querySelector(formSelector);
-
   popupElement.addEventListener('click', handleOverlayClick);
   document.addEventListener('keydown', handleEscapeKey);
-  closeButton.addEventListener('click', closeButtonHandle);
-
-  if(formElement){
-    formElement.addEventListener('submit', handleSubmit);
-  }
 }
 
+// Remove popup events
 function removePopupEvents(popupElement){
-  const closeButton = popupElement.querySelector(popupCloseButtonSelector);
-  const formElement = popupElement.querySelector(formSelector);
-
   popupElement.removeEventListener('click', handleOverlayClick);
   document.removeEventListener('keydown', handleEscapeKey);
-  closeButton.removeEventListener('click', closeButtonHandle);
-
-  if(formElement){
-    formElement.removeEventListener('submit', handleSubmit);
-  }
 }
 
 /*
@@ -116,34 +106,22 @@ function removePopupEvents(popupElement){
 */
 
 // Place form data handler
-function handlePlaceFormData() {
-  cardsContainer.prepend(newCard({name: titleInput.value, link: linkInput.value}));
+function handlePlaceSubmit(e) {
+  e.preventDefault();
+
+  cardsContainer.prepend(createCard({name: titleInput.value, link: linkInput.value}));
 
   closePopup(popupNew);
 }
 
 // Profile form data handler
-function handleProfileFormData() {
+function handleProfileSubmit(e) {
+  e.preventDefault();
+
   profileName.textContent = nameInput.value;
   profileBio.textContent = bioInput.value;
 
   closePopup(popupEdit);
-}
-
-const handleFormData = {
-  "new-place": handlePlaceFormData,
-  "edit-profile": handleProfileFormData
-}
-
-// Form submit Handler
-function handleSubmit(e){
-  e.preventDefault();
-
-  const form = e.target;
-
-  if(!form.querySelector(`.${inactiveButtonClass}`)){
-    handleFormData[form.getAttribute('name')]();
-  }
 }
 
 /*
@@ -151,7 +129,7 @@ function handleSubmit(e){
 */
 
 // Add new card to gallery
-function newCard(card){
+function createCard(card){
   const cardElement = cardTemplate.querySelector(cardSelector).cloneNode(true);
   const cardTitle = cardElement.querySelector(cardTitleSelector);
   const cardImage = cardElement.querySelector(cardImageSelector);
@@ -165,16 +143,16 @@ function newCard(card){
 }
 
 // Delete click handler
-function handleDelete(e) {
+function handleCardDelete(e) {
   e.stopPropagation();
 
   const cardElement = e.target.closest(cardSelector);
-  removeCardEvents(cardElement)
+  removeCardEvents(cardElement);
   cardElement.remove();
 }
 
 // Like click handler
-function handleLike(e) {
+function handleLikeClick(e) {
   e.stopPropagation();
   e.target.classList.toggle(activelikeButtonClass);
 }
@@ -197,8 +175,8 @@ function addCardEvents(cardElement){
   const cardDeleteButton = cardElement.querySelector(cardDeleteSelector);
 
   cardImage.addEventListener('click', handlePictureClick);
-  cardLikeButton.addEventListener('click',handleLike);
-  cardDeleteButton.addEventListener('click',handleDelete);
+  cardLikeButton.addEventListener('click',handleLikeClick);
+  cardDeleteButton.addEventListener('click',handleCardDelete);
 
 }
 
@@ -209,12 +187,12 @@ function removeCardEvents(cardElement){
   const cardDeleteButton = cardElement.querySelector(cardDeleteSelector);
 
   cardImage.removeEventListener('click', handlePictureClick);
-  cardLikeButton.removeEventListener('click',handleLike);
-  cardDeleteButton.removeEventListener('click',handleDelete);
+  cardLikeButton.removeEventListener('click',handleLikeClick);
+  cardDeleteButton.removeEventListener('click',handleCardDelete);
 }
 
 // Load cards
-initialCards.forEach(card=>cardsContainer.append(newCard(card)));
+initialCards.forEach(card=>cardsContainer.append(createCard(card)));
 
 /*
   Page Buttons:
@@ -243,11 +221,20 @@ function handleAddButtonClick(e) {
   openPopup(popupNew);
 }
 
+/*
+  Events:
+*/
+
 editButton.addEventListener('click', handleEditButtonClick);
 addButton.addEventListener('click', handleAddButtonClick);
 
+closeButtons.forEach(button => button.addEventListener('click', handleCloseButtonClick));
+
+profileFormElement.addEventListener('submit', handleProfileSubmit);
+pictureFormElement.addEventListener('submit', handlePlaceSubmit);
+
 /*
-  Validation
+  Validation:
 */
 
 enableValidation({

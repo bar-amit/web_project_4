@@ -32,10 +32,12 @@ function hasInvalidInput(inputs){
 
 function disableButton(button, inactiveClass){
   button.classList.add(inactiveClass);
+  button.disabled = true;
 }
 
 function enableButton(button, inactiveClass){
   button.classList.remove(inactiveClass);
+  button.disabled = false;
 }
 
 function isValid(input, error, visibleErrorClass, inputErrorClass){
