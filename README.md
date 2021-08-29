@@ -10,9 +10,9 @@
 
 This project is an interactive page where users can add, remove, or like photos. It is buit with HTML, CSS and Javascript.
 
-The project is structured with BEM.
+The project is structured with [BEM](https://en.bem.info/).
 
-Some other technologies used in this project: css-flex, css-grid, html-forms and media queries.
+Some other technologies used in this project: [css-flex](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox), [css-grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout), [html-forms](https://developer.mozilla.org/en-US/docs/Learn/Forms), [Javascript form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation), [Events](https://developer.mozilla.org/en-US/docs/Web/Events) and [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/@media).
 
 [Checkout the project on Github Pages!](https://bar-amit.github.io/web_project_4/)
 
@@ -20,11 +20,10 @@ Some other technologies used in this project: css-flex, css-grid, html-forms and
 
 In my latest update I've added:
 
-* Add/remove photos functionality.
-* Like button functionality.
-* Smooth transition to the pop-up windows.
-* A new Picture Pop-up.
-* A new delete button for the cards.
+* User can add photos.
+* A new popup for viewing pictures.
+* Client side form validation.
+* Better code structure and event handling.
 
 **What's next?**
 
