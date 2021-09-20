@@ -1,14 +1,13 @@
 import Card from './card.js';
+import Validation from './validation.js';
 
 /*
   DOM elements:
 */
 
-// Selectors
+// Selectors & classes
 const popupSelector = ".popup";
-const formSelector = ".popup__form";
-const inputSelector = ".popup__input";
-const submitButtonSelector = ".popup__save-button";
+const activePopupClass = "popup_visible";
 const cardSelectors = {
   cardSelector: ".card",
   cardTemplateSelector: ".card__template",
@@ -18,12 +17,13 @@ const cardSelectors = {
   cardDeleteSelector: ".card__delete-button",
   activelikeButtonClass: "card__like-button_active"
 }
-
-// classes
-const activePopupClass = "popup_visible";
-const inactiveButtonClass = "popup__save-button_disabled";
-const inputErrorClass = "popup__input_error";
-const errorClass = "popup__input-error_visible";
+const formSelectors = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save-button",
+  inactiveButtonClass: "popup__save-button_disabled",
+  inputErrorClass: "popup__input_error",
+  errorClass: "popup__input-error_visible"
+}
 
 // Forms
 const profileFormElement = document.querySelector('.popup__form_name_edit-profile');
@@ -50,6 +50,13 @@ const popupNew = document.querySelector('.popup_name_new-place');
 
 // Cards container
 const cardsContainer = document.querySelector('.gallery__container');
+
+/*
+  Form Validation:
+*/
+
+const profileFormValidation = new Validation(formSelectors, profileFormElement);
+const pictureFormValidation = new Validation(formSelectors, pictureFormElement);
 
 /*
   Popups:
@@ -148,7 +155,7 @@ function handleEditButtonClick(e) {
   nameInput.value = profileName.textContent;
   bioInput.value = profileBio.textContent;
 
-  resetValidation(popupEdit, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass);
+  profileFormValidation.resetValidation();
   openPopup(popupEdit);
 }
 
@@ -159,7 +166,7 @@ function handleAddButtonClick(e) {
   titleInput.value = '';
   linkInput.value = '';
 
-  resetValidation(popupNew, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass);
+  pictureFormValidation.resetValidation();
   openPopup(popupNew);
 }
 
@@ -179,11 +186,5 @@ pictureFormElement.addEventListener('submit', handlePlaceSubmit);
   Validation:
 */
 
-enableValidation({
-  formSelector,
-  inputSelector,
-  submitButtonSelector,
-  inactiveButtonClass,
-  inputErrorClass,
-  errorClass
-});
+profileFormValidation.enableValidation();
+pictureFormValidation.enableValidation();
