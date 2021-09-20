@@ -12,6 +12,8 @@ This project is an interactive page where users can add, remove, or like photos.
 
 The project is structured with [BEM](https://en.bem.info/).
 
+[OOP](https://en.wikipedia.org/wiki/Object-oriented_programming) is used for the Validation and Card modules.
+
 Some other technologies used in this project: [css-flex](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox), [css-grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout), [html-forms](https://developer.mozilla.org/en-US/docs/Learn/Forms), [Javascript form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation), [Events](https://developer.mozilla.org/en-US/docs/Web/Events) and [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/@media).
 
 [Checkout the project on Github Pages!](https://bar-amit.github.io/web_project_4/)
@@ -20,10 +22,10 @@ Some other technologies used in this project: [css-flex](https://developer.mozil
 
 In my latest update I've added:
 
-* User can add photos.
-* A new popup for viewing pictures.
-* Client side form validation.
-* Better code structure and event handling.
+* The app uses JS modules now.
+* The card functionality is now available as an interface in the Card module.
+* The validation is also a module.
+* OOP is used for the new modules.
 
 **What's next?**
 
