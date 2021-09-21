@@ -1,17 +1,5 @@
-/*
-  Picture Popup
-*/
-
-const popupPicture = document.querySelector('.popup_name_picture');
-const pictureTitle = popupPicture.querySelector('.popup__picture-title');
-const pictureImage = popupPicture.querySelector('.popup__picture');
-
-/*
-  Card Class
-*/
-
 class Card {
-  constructor(data, selectors, popupFunctions) {
+  constructor(data, selectors) {
 
     //data
     this._name = data.name;
@@ -28,12 +16,10 @@ class Card {
     // bound handlers:
     this._handleLike = this._handleLikeClick.bind(this);
     this._handleDelete = this._handleCardDelete.bind(this);
-    this._handlePicture = this._handlePictureClick.bind(this);
+
+    this._handlePicture = selectors.openPicture;
 
     this._activelikeButtonClass = selectors.activelikeButtonClass;
-
-    this._openPopup = () => popupFunctions.openPopup(popupPicture);
-    this._closePopup = () => popupFunctions.closePopup(popupPicture);
   }
 
   _getTemplate() {
@@ -51,13 +37,7 @@ class Card {
     likeButton.classList.toggle(this._activelikeButtonClass);
   }
 
-  _handlePictureClick() {
-    pictureTitle.textContent = this._name;
-    pictureImage.setAttribute('src', this._link);
-    pictureImage.setAttribute('alt', this._name);
 
-    this._openPopup();
-  }
 
   _addCardEvents(){
     const cardImage = this._element.querySelector(this._cardImageSelector);

@@ -47,6 +47,10 @@ const profileBio = document.querySelector('.profile__bio');
 // Popups
 const popupEdit = document.querySelector('.popup_name_edit-profile');
 const popupNew = document.querySelector('.popup_name_new-place');
+const popupPicture = document.querySelector('.popup_name_picture');
+
+const pictureTitle = popupPicture.querySelector('.popup__picture-title');
+const pictureImage = popupPicture.querySelector('.popup__picture');
 
 // Cards container
 const cardsContainer = document.querySelector('.gallery__container');
@@ -133,8 +137,16 @@ function handleProfileSubmit(e) {
   Cards:
 */
 
+function handlePictureClick(data) {
+  pictureTitle.textContent = data.name;
+  pictureImage.setAttribute('src', data.link);
+  pictureImage.setAttribute('alt', data.name);
+
+  openPopup(popupPicture);
+}
+
 function addNewCard(data){
-  const newCard = new Card(data, cardSelectors, {openPopup, closePopup});
+  const newCard = new Card(data, {...cardSelectors, openPicture: () => handlePictureClick(data)});
   cardsContainer.prepend(newCard.generateCard());
 }
 
