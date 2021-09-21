@@ -28,7 +28,6 @@ class Card {
   }
 
   _handleCardDelete() {
-    this._removeCardEvents();
     this._element.remove();
   }
 
@@ -48,16 +47,6 @@ class Card {
     cardLikeButton.addEventListener('click', this._handleLike);
     cardDeleteButton.addEventListener('click', this._handleDelete);
 
-  }
-
-  _removeCardEvents(){
-    const cardImage = this._element.querySelector(this._cardImageSelector);
-    const cardLikeButton = this._element.querySelector(this._cardLikeSelector);
-    const cardDeleteButton = this._element.querySelector(this._cardDeleteSelector);
-
-    cardImage.removeEventListener('click', this._handlePicture);
-    cardLikeButton.removeEventListener('click', this._handleLike);
-    cardDeleteButton.removeEventListener('click', this._handleDelete);
   }
 
   generateCard(){
