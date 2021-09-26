@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Around the U.S.</title>
-    <link rel="stylesheet" href="./pages/index.css">
   </head>
   <body class="page">
     <header class="header">
-      <img class="header__logo" src='./images/header__logo_large.svg' alt='Around the U.S. logo'>
+      <img class="header__logo" src="<%= require('./images/header__logo_large.svg') %>" alt='Around the U.S. logo'>
     </header>
     <main class="main">
       <section class="profile">
-        <img class="profile__image" src="./images/profile__image.jpg" alt="profile image">
+        <img class="profile__image" src="<%= require('./images/profile__image.jpg') %>" alt="profile image">
         <div class="profile__info">
           <h1 class="profile__name">Jacques Cousteau</h1>
           <button class="profile__edit-button" type="button" aria-label="Edit profile"></button>
@@ -84,10 +83,5 @@
       </li>
     </template>
 
-    <script type="module" src="./scripts/card.js"></script>
-    <script type="module" src="./scripts/validation.js"></script>
-    <script type="module" src="./scripts/vars.js"></script>
-    <script src="./scripts/cards.js"></script>
-    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>

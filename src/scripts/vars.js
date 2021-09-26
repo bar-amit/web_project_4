@@ -1,6 +1,38 @@
 import Validation from './validation.js';
 
 /*
+  Data:
+*/
+
+const initialCards = [
+  {
+    name: "Yosemite Valley",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+  },
+  {
+    name: "Lake Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg"
+  }
+];
+
+
+/*
   DOM elements:
 */
 
@@ -61,4 +93,4 @@ const cardsContainer = document.querySelector('.gallery__container');
 const profileFormValidation = new Validation(formSelectors, profileFormElement);
 const pictureFormValidation = new Validation(formSelectors, pictureFormElement);
 
-export {popupSelector, activePopupClass, cardSelectors, editButton, addButton, closeButtons, nameInput, bioInput, titleInput, linkInput, profileName, profileBio, popupEdit, popupNew, popupPicture, pictureTitle, pictureImage, cardsContainer, profileFormValidation, pictureFormValidation, profileFormElement, pictureFormElement};
+export {popupSelector, activePopupClass, cardSelectors, editButton, addButton, closeButtons, nameInput, bioInput, titleInput, linkInput, profileName, profileBio, popupEdit, popupNew, popupPicture, pictureTitle, pictureImage, cardsContainer, profileFormValidation, pictureFormValidation, profileFormElement, pictureFormElement, initialCards};

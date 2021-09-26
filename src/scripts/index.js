@@ -1,5 +1,6 @@
+import '../pages/index.css';
 import Card from './card.js';
-import {popupSelector, activePopupClass, cardSelectors, editButton, addButton, closeButtons, nameInput, bioInput, titleInput, linkInput, profileName, profileBio, popupEdit, popupNew, popupPicture, pictureTitle, pictureImage, cardsContainer, profileFormValidation, pictureFormValidation, profileFormElement, pictureFormElement} from './vars.js'
+import {popupSelector, activePopupClass, cardSelectors, editButton, addButton, closeButtons, nameInput, bioInput, titleInput, linkInput, profileName, profileBio, popupEdit, popupNew, popupPicture, pictureTitle, pictureImage, cardsContainer, profileFormValidation, pictureFormValidation, profileFormElement, pictureFormElement, initialCards} from './vars.js'
 
 /*
   Popups:
