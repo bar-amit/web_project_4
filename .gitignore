@@ -1,12 +1,4 @@
 .editorconfig
-
-
-bin
-bin/*
+dist
 TODO.txt
-
-package.json
-index.js
 node_modules
-node_modules/*
-package-lock.json
