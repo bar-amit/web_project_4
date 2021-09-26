@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   devtool: 'inline-source-map',
   entry: {
-    main: './src/scripts/index.js'
+    main: './src/pages/index.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -14,7 +14,6 @@ module.exports = {
     publicPath: ''
   },
   target: ['web', 'es5'], // ensure the Webpack glue code is ES5 compatible too
-  stats: { children: true }, // Show child compilation errors from plugins
   mode: 'development',
   devServer: {
     historyApiFallback: true,

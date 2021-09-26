@@ -1,15 +1,15 @@
 class Validation {
-  constructor(configuration, form) {
+  constructor({inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass}, form) {
     this._form = form;
 
     // selectors
-    this._inputSelector = configuration.inputSelector;
-    this._submitButtonSelector = configuration.submitButtonSelector;
+    this._inputSelector = inputSelector;
+    this._submitButtonSelector = submitButtonSelector;
 
     // classes
-    this._inactiveButtonClass = configuration.inactiveButtonClass;
-    this._inputErrorClass = configuration.inputErrorClass;
-    this._errorClass = configuration.errorClass;
+    this._inactiveButtonClass = inactiveButtonClass;
+    this._inputErrorClass = inputErrorClass;
+    this._errorClass = errorClass;
 
     this._boundHandleInput = this._handleInput.bind(this);
   }
