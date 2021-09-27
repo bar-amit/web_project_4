@@ -36,8 +36,8 @@ const pictureFormValidation = new Validation(formSelectors, pictureFormElement);
 function handlePlaceSubmit(e) {
   e.preventDefault();
 
-  this._getInputValues();
-  gallerySection.addItem({name: this._values[0], link: this._values[1]});
+  const {title: name, link} = this._getInputValues();
+  gallerySection.addItem({name, link});
 
   this.close();
 }
@@ -46,8 +46,8 @@ function handlePlaceSubmit(e) {
 function handleProfileSubmit(e) {
   e.preventDefault();
 
-  this._getInputValues();
-  profileView.setUserInfo({name: this._values[0], bio: this._values[1]})
+  const {name, bio} = this._getInputValues();
+  profileView.setUserInfo({name, bio})
 
   this.close();
 }
@@ -80,8 +80,8 @@ function handleEditButtonClick(e) {
 
   profileFormValidation.resetValidation();
 
-  const info = profileView.getUserInfo();
-  editPopup.open([info.name, info.bio]);
+  const {name, bio} = profileView.getUserInfo();
+  editPopup.open({name, bio});
 }
 
 // Add click handler
@@ -90,7 +90,7 @@ function handleAddButtonClick(e) {
 
   pictureFormValidation.resetValidation();
 
-  addPopup.open([]);
+  addPopup.open({});
 }
 
 /*

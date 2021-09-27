@@ -38,6 +38,7 @@ const initialCards = [
 const profileFormSelector = '.popup__form_name_edit-profile';
 const pictureFormSelector = '.popup__form_name_new-place';
 const formSelectors = {
+  formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__save-button",
   inactiveButtonClass: "popup__save-button_disabled",
