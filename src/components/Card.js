@@ -53,9 +53,9 @@ class Card {
 
     this._addCardEvents();
     this._element.querySelector(this._cardTitleSelector).textContent = this._name;
-    const img = this._element.querySelector(this._cardImageSelector);
-    img.src = this._link;
-    img.alt = this._name;
+    const image = this._element.querySelector(this._cardImageSelector);
+    image.src = this._link;
+    image.alt = this._name;
 
     return this._element;
   }
