@@ -15,10 +15,12 @@ export default class Popup {
     this.removeEventListeners();
   }
   _handleEscapeClose = (e) => {
-    if(e.key==='Escape') this.close();
+    if(e.key==='Escape')
+      this.close();
   }
   _handleOverlayClose = (e) => {
-    if(e.target.classList.contains(activePopupClass)) this.close();
+    if(e.target.classList.contains(activePopupClass))
+      this.close();
   }
   setEventListeners() {
     this._closeButton.addEventListener('click', this._handleCloseButton);
