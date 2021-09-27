@@ -35,8 +35,8 @@ const initialCards = [
 */
 
 // Forms
-const profileFormElement = document.querySelector('.popup__form_name_edit-profile');
-const pictureFormElement = document.querySelector('.popup__form_name_new-place');
+const profileFormSelector = '.popup__form_name_edit-profile';
+const pictureFormSelector = '.popup__form_name_new-place';
 const formSelectors = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__save-button",
@@ -46,8 +46,8 @@ const formSelectors = {
 }
 
 // Buttons
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button');
+const editButtonSelector = '.profile__edit-button';
+const addButtonSelector = '.profile__add-button';
 
 // Profile
 const profileSelectors = {
@@ -77,4 +77,4 @@ const cardSelectors = {
 }
 const cardsContainerSelector = '.gallery__container';
 
-export {formSelectors, activePopupClass, cardSelectors, editButton, addButton, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, cardsContainerSelector, profileFormElement, pictureFormElement, initialCards, popupCloseButtonSelector, popupTitleSelector, popupImageSelector, profileSelectors};
+export {formSelectors, activePopupClass, cardSelectors, editButtonSelector, addButtonSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, initialCards, popupCloseButtonSelector, popupTitleSelector, popupImageSelector, profileSelectors};

@@ -5,7 +5,7 @@ import PopupWithImage from '../components/PopupWithImage';
 import UserInfo from '../components/UserInfo';
 import Section  from '../components/Section';
 import Validation from '../components/Validation';
-import {profileSelectors, formSelectors, cardSelectors, editButton, addButton, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, cardsContainerSelector, profileFormElement, pictureFormElement, initialCards} from '../components/constants'
+import {profileSelectors, formSelectors, cardSelectors, editButtonSelector, addButtonSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, initialCards} from '../components/constants'
 
 /*
   Profile:
@@ -25,6 +25,9 @@ const addPopup = new PopupWithForm(addCardPopupSelector, handlePlaceSubmit);
 /*
   Forms:
 */
+
+const profileFormElement = document.querySelector(profileFormSelector);
+const pictureFormElement = document.querySelector(pictureFormSelector);
 
 const profileFormValidation = new Validation(formSelectors, profileFormElement);
 const pictureFormValidation = new Validation(formSelectors, pictureFormElement);
@@ -65,6 +68,12 @@ function addNewCard(data){
   Page Buttons:
 */
 
+const editButton = document.querySelector(editButtonSelector);
+const addButton = document.querySelector(addButtonSelector);
+
+editButton.addEventListener('click', handleEditButtonClick);
+addButton.addEventListener('click', handleAddButtonClick);
+
 // Edit click handler
 function handleEditButtonClick(e) {
   e.stopPropagation();
@@ -83,9 +92,6 @@ function handleAddButtonClick(e) {
 
   addPopup.open([]);
 }
-
-editButton.addEventListener('click', handleEditButtonClick);
-addButton.addEventListener('click', handleAddButtonClick);
 
 /*
   Validation:
