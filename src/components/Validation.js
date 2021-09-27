@@ -29,11 +29,11 @@ class Validation {
   }
 
   _handleInput(e){
-    this._isValid(e.target);
+    this._validateInput(e.target);
     this._setButtonState();
   }
 
-  _isValid(input) {
+  _validateInput(input) {
     if(input.validity.valid){
       this._hideError(input);
     }
