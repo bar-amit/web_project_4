@@ -19,7 +19,7 @@ class Card {
 
     this._handlePicture = assets.openPicture;
 
-    this._activelikeButtonClass = assets.activelikeButtonClass;
+    this._activeLikeButtonClass = assets.activeLikeButtonClass;
   }
 
   _getTemplate() {
@@ -33,7 +33,7 @@ class Card {
 
   _handleLikeClick() {
     const likeButton = this._element.querySelector(this._cardLikeSelector);
-    likeButton.classList.toggle(this._activelikeButtonClass);
+    likeButton.classList.toggle(this._activeLikeButtonClass);
   }
 
   _addCardEvents(){

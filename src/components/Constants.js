@@ -73,7 +73,7 @@ const cardSelectors = {
   cardImageSelector: ".card__image",
   cardLikeSelector: ".card__like-button",
   cardDeleteSelector: ".card__delete-button",
-  activelikeButtonClass: "card__like-button_active"
+  activeLikeButtonClass: "card__like-button_active"
 }
 const cardsContainerSelector = '.gallery__container';
 
