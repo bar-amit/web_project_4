@@ -5,7 +5,7 @@ import PopupWithImage from '../components/PopupWithImage';
 import UserInfo from '../components/UserInfo';
 import Section  from '../components/Section';
 import Validation from '../components/Validation';
-import {profileSelectors, formSelectors, cardSelectors, editButton, addButton, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, cardsContainerSelector, profileFormElement, pictureFormElement, initialCards} from '../components/Constants'
+import {profileSelectors, formSelectors, cardSelectors, editButton, addButton, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, cardsContainerSelector, profileFormElement, pictureFormElement, initialCards} from '../components/constants'
 
 /*
   Profile:

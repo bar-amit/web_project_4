@@ -1,4 +1,4 @@
-import { activePopupClass, popupCloseButtonSelector } from "./Constants";
+import { activePopupClass, popupCloseButtonSelector } from "./constants";
 
 export default class Popup {
   constructor(selector) {

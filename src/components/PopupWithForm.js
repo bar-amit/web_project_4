@@ -1,5 +1,5 @@
 import Popup from "./Popup";
-import { formSelectors } from "./Constants";
+import { formSelectors } from "./constants";
 
 export default class PopupWithForm extends Popup {
   constructor(selector, handleSubmit) {
