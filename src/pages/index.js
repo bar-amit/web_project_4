@@ -18,8 +18,8 @@ const profileView = new UserInfo(profileSelectors);
 */
 
 const picturePopup = new PopupWithImage(picturePopupSelector);
-const editPopup = new PopupWithForm(editProfilePopupSelector, handleProfileSubmit);
-const addPopup = new PopupWithForm(addCardPopupSelector, handlePlaceSubmit);
+const editPopup = new PopupWithForm(editProfilePopupSelector, {handleSubmit: handleProfileSubmit, resetValidation: () => profileFormValidator.resetValidation()});
+const addPopup = new PopupWithForm(addCardPopupSelector, {handleSubmit: handlePlaceSubmit, resetValidation: () => pictureFormValidator.resetValidation()});
 
 
 /*
@@ -29,8 +29,8 @@ const addPopup = new PopupWithForm(addCardPopupSelector, handlePlaceSubmit);
 const profileFormElement = document.querySelector(profileFormSelector);
 const pictureFormElement = document.querySelector(pictureFormSelector);
 
-const profileFormValidation = new Validation(formSelectors, profileFormElement);
-const pictureFormValidation = new Validation(formSelectors, pictureFormElement);
+const profileFormValidator = new Validation(formSelectors, profileFormElement);
+const pictureFormValidator = new Validation(formSelectors, pictureFormElement);
 
 // Place form data handler
 function handlePlaceSubmit(e) {
@@ -78,8 +78,6 @@ addButton.addEventListener('click', handleAddButtonClick);
 function handleEditButtonClick(e) {
   e.stopPropagation();
 
-  profileFormValidation.resetValidation();
-
   const {name, bio} = profileView.getUserInfo();
   editPopup.open({name, bio});
 }
@@ -88,8 +86,6 @@ function handleEditButtonClick(e) {
 function handleAddButtonClick(e) {
   e.stopPropagation();
 
-  pictureFormValidation.resetValidation();
-
   addPopup.open({});
 }
 
@@ -97,5 +93,5 @@ function handleAddButtonClick(e) {
   Validation:
 */
 
-profileFormValidation.enableValidation();
-pictureFormValidation.enableValidation();
+profileFormValidator.enableValidation();
+pictureFormValidator.enableValidation();

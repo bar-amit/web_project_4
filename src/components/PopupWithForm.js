@@ -2,9 +2,10 @@ import Popup from "./Popup";
 import { formSelectors } from "./constants";
 
 export default class PopupWithForm extends Popup {
-  constructor(selector, handleSubmit) {
+  constructor(selector, {handleSubmit, resetValidation}) {
     super(selector);
     this._handleSubmit = handleSubmit.bind(this);
+    this._resetValidation = resetValidation;
     this._inputs = Array.from(this._element.querySelectorAll(formSelectors.inputSelector));
     this._form = this._element.querySelector(formSelectors.formSelector);
   }
@@ -29,6 +30,7 @@ export default class PopupWithForm extends Popup {
   }
   close = () => {
     this.removeEventListeners();
+    this._resetValidation();
     super.close();
     this._form.reset();
   }
