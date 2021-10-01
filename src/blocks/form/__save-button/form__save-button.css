@@ -1,4 +1,4 @@
-.popup__save-button {
+.form__save-button {
   height: 50px;
   padding: 0;
   background-color: black;
@@ -9,13 +9,13 @@
   line-height: 1.21;
 }
 
-.popup__save-button:hover {
+.form__save-button:hover {
   cursor: pointer;
   opacity: 0.8;
 }
 
 @media screen and (max-width: 508px) {
-  .popup__save-button {
+  .form__save-button {
     font-size: 14px;
     height: 46px;
   }

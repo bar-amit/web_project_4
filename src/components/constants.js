@@ -35,15 +35,15 @@ const initialCards = [
 */
 
 // Forms
-const profileFormSelector = '.popup__form_name_edit-profile';
-const pictureFormSelector = '.popup__form_name_new-place';
+const profileFormSelector = '.form_name_edit-profile';
+const pictureFormSelector = '.popup_name_new-place';
 const formSelectors = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__save-button",
-  inactiveButtonClass: "popup__save-button_disabled",
-  inputErrorClass: "popup__input_error",
-  errorClass: "popup__input-error_visible"
+  formSelector: ".form",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__save-button",
+  inactiveButtonClass: "form__save-button_disabled",
+  inputErrorClass: "form__input_error",
+  errorClass: "form__input-error_visible"
 }
 
 // Buttons

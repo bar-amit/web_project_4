@@ -1,11 +1,11 @@
-.popup__save-button_disabled {
+.form__save-button_disabled {
   color: black;
   background-color: white;
   border: solid black 1px;
   opacity: 0.2;
 }
 
-.popup__save-button_disabled:hover {
+.form__save-button_disabled:hover {
   cursor: default;
   opacity: 0.2;
 }

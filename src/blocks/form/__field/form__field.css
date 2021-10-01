@@ -1,12 +1,12 @@
-.popup__field {
+.form__field {
   width: 100%;
   position: relative;
 }
 
-.popup__field:first-of-type {
+.form__field:first-of-type {
   margin-bottom: 29px;
 }
 
-.popup__field:last-of-type {
+.form__field:last-of-type {
   margin-bottom: 46px;
 }

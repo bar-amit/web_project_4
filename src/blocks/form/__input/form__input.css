@@ -1,4 +1,4 @@
-.popup__input {
+.form__input {
   height: 26px;
   width: 100%;
   padding: 0;
@@ -8,7 +8,7 @@
   line-height: 1.21;
 }
 
-.popup__input:focus-visible {
+.form__input:focus-visible {
   border-bottom: rgba(0,100,250,0.2) 1px solid;
   outline: none;
 }
