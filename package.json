@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -36,5 +36,5 @@
   "bugs": {
     "url": "https://github.com/bar-amit/web_project_4/issues"
   },
-  "homepage": "https://github.com/bar-amit/web_project_4#readme"
+  "homepage": "https://bar-amit.github.io/web_project_4"
 }
