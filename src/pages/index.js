@@ -1,4 +1,8 @@
+// style:
 import './index.css';
+
+// components:
+import Api from '../components/Api'
 import Card from '../components/Card';
 import PopupWithForm from '../components/PopupWithForm';
 import PopupWithImage from '../components/PopupWithImage';
