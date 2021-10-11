@@ -64,6 +64,21 @@
       </div>
     </div>
 
+    <div class="popup popup_name_edit-avatar">
+      <div class="popup__container">
+        <button class="popup__close-button popup__close-button_shrink" type="button" aria-label="close"></button>
+        <h2 class="popup__title">Change profile picture</h2>
+        <form class="form form_name_edit-avatar" name="edit-avatar" novalidate>
+          <label class="form__field">
+            <input id="input_url" class="form__input form__input_type_url" type="url" name="url" placeholder="Image URL" required>
+            <span id="input_url-error" class="form__input-error"></span>
+          </label>
+          <button class="form__save-button form__save-button_disabled" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+
+
     <div class="popup popup_name_picture">
       <div class="popup__picture-container">
         <button class="popup__close-button" type="button" aria-label="close"></button>
