@@ -36,7 +36,8 @@ const initialCards = [
 
 // Forms
 const profileFormSelector = '.form_name_edit-profile';
-const pictureFormSelector = '.popup_name_new-place';
+const pictureFormSelector = '.form_name_new-place';
+const avatarFormSelector = '.form_name_edit-avatar';
 const formSelectors = {
   formSelector: ".form",
   inputSelector: ".form__input",
@@ -49,6 +50,7 @@ const formSelectors = {
 // Buttons
 const editButtonSelector = '.profile__edit-button';
 const addButtonSelector = '.profile__add-button';
+const editAvatarButtonSelector = '.profile__avatar';
 
 // Profile
 const profileSelectors = {
@@ -81,4 +83,4 @@ const cardSelectors = {
 }
 const cardsContainerSelector = '.gallery__container';
 
-export {formSelectors, activePopupClass, cardSelectors, editButtonSelector, addButtonSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, avatarPopupSelector, confirmPopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, initialCards, popupCloseButtonSelector, popupTitleSelector, popupImageSelector, profileSelectors};
+export {formSelectors, activePopupClass, cardSelectors, editButtonSelector, addButtonSelector, editAvatarButtonSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, avatarPopupSelector, confirmPopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, avatarFormSelector, initialCards, popupCloseButtonSelector, popupTitleSelector, popupImageSelector, profileSelectors};

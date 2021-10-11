@@ -7,7 +7,10 @@ export default class PopupWithConfirmation extends Popup {
     this._buttonElement = this._element.querySelector(buttonSelector);
   }
   open = (handleConfirm) => {
-    this._handleConfirm = handleConfirm;
+    this._handleConfirm = () => {
+      handleConfirm();
+      this.close();
+    }
     this.setEventListeners();
     super.open();
   }

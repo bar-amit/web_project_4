@@ -1,5 +1,5 @@
 class Card {
-  constructor(data, assets) {
+  constructor(data, assets, confirmDelete) {
 
     //data
     this._name = data.name;
@@ -18,6 +18,7 @@ class Card {
     this._handleDelete = this._handleCardDelete.bind(this);
 
     this._handlePicture = assets.openPicture;
+    this._confirm = confirmDelete;
 
     this._activeLikeButtonClass = assets.activeLikeButtonClass;
   }
@@ -28,8 +29,10 @@ class Card {
   }
 
   _handleCardDelete() {
-    this._element.remove();
-    this._element = null;
+    this._confirm(() =>{
+      this._element.remove();
+      this._element = null;
+    })
   }
 
   _handleLikeClick() {
