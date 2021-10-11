@@ -60,6 +60,9 @@ const profileSelectors = {
 const editProfilePopupSelector = '.popup_name_edit-profile';
 const addCardPopupSelector = '.popup_name_new-place';
 const picturePopupSelector = '.popup_name_picture';
+const avatarPopupSelector = '.popup_name_edit-avatar';
+const confirmPopupSelector = '.popup_name_confirm';
+
 const activePopupClass = "popup_visible";
 const popupCloseButtonSelector = '.popup__close-button';
 const popupTitleSelector = '.popup__picture-title';
@@ -78,4 +81,4 @@ const cardSelectors = {
 }
 const cardsContainerSelector = '.gallery__container';
 
-export {formSelectors, activePopupClass, cardSelectors, editButtonSelector, addButtonSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, initialCards, popupCloseButtonSelector, popupTitleSelector, popupImageSelector, profileSelectors};
+export {formSelectors, activePopupClass, cardSelectors, editButtonSelector, addButtonSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, avatarPopupSelector, confirmPopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, initialCards, popupCloseButtonSelector, popupTitleSelector, popupImageSelector, profileSelectors};

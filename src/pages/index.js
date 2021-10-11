@@ -6,10 +6,11 @@ import Api from '../components/Api'
 import Card from '../components/Card';
 import PopupWithForm from '../components/PopupWithForm';
 import PopupWithImage from '../components/PopupWithImage';
+import PopupWithConfirmation from '../components/PopupWithConfirmation'
 import UserInfo from '../components/UserInfo';
 import Section  from '../components/Section';
 import Validation from '../components/Validation';
-import {profileSelectors, formSelectors, cardSelectors, editButtonSelector, addButtonSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, initialCards} from '../components/constants'
+import {profileSelectors, formSelectors, cardSelectors, editButtonSelector, addButtonSelector, avatarPopupSelector, confirmPopupSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, initialCards} from '../components/constants'
 
 /*
   Profile:
@@ -24,7 +25,7 @@ const profileView = new UserInfo(profileSelectors);
 const picturePopup = new PopupWithImage(picturePopupSelector);
 const editPopup = new PopupWithForm(editProfilePopupSelector, {handleSubmit: handleProfileSubmit, resetValidation: () => profileFormValidator.resetValidation()});
 const addPopup = new PopupWithForm(addCardPopupSelector, {handleSubmit: handlePlaceSubmit, resetValidation: () => pictureFormValidator.resetValidation()});
-
+const confirmPopup = new PopupWithConfirmation(confirmPopupSelector, formSelectors.submitButtonSelector);
 
 /*
   Forms:
