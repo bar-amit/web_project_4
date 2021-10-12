@@ -3,3 +3,4 @@ dist
 TODO.txt
 node_modules
 /bin
+.env
