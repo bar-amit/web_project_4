@@ -24,7 +24,10 @@ export default class Api {
   updateUserAvatar(avatar){
     return fetch(`${this._host}/users/me/avatar`,{
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
         avatar
       })})

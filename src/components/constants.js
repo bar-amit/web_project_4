@@ -55,7 +55,8 @@ const editAvatarButtonSelector = '.profile__avatar';
 // Profile
 const profileSelectors = {
   userNameSelector: '.profile__name',
-  descriptionSelector: '.profile__bio'
+  descriptionSelector: '.profile__bio',
+  avatarSelector: '.profile__image'
 };
 
 // Popups

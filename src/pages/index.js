@@ -24,6 +24,10 @@ const api = new Api({host: 'https://around.nomoreparties.co/v1/group-12', author
 
 const profileView = new UserInfo(profileSelectors);
 
+api.getUserInfo().then(data=>{
+  profileView.setUserInfo(data);
+  profileView.setUserAvatar(data.avatar);
+});
 
 /*
   Popups:
@@ -53,7 +57,7 @@ function handlePlaceSubmit(e) {
 
   const {title: name, link} = this._getInputValues();
   gallerySection.addItem({name, link});
-
+  api.addCard({name, link});
   this.close();
 }
 
@@ -61,9 +65,9 @@ function handlePlaceSubmit(e) {
 function handleProfileSubmit(e) {
   e.preventDefault();
 
-  const {name, bio} = this._getInputValues();
-  profileView.setUserInfo({name, bio})
-
+  const {name, bio: about} = this._getInputValues();
+  profileView.setUserInfo({name, about})
+  api.updateUser({name, about});
   this.close();
 }
 
@@ -71,6 +75,10 @@ function handleProfileSubmit(e) {
 function handleAvatarSubmit(e){
   e.preventDefault();
 
+  const {url} = this._getInputValues();
+
+  api.updateUserAvatar(url);
+  profileView.setUserAvatar(url);
   this.close();
 }
 
