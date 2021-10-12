@@ -79,6 +79,7 @@ const cardSelectors = {
   cardTitleSelector: ".card__title",
   cardImageSelector: ".card__image",
   cardLikeSelector: ".card__like-button",
+  cardLikeCounterSelector: ".card__like-counter",
   cardDeleteSelector: ".card__delete-button",
   activeLikeButtonClass: "card__like-button_active"
 }

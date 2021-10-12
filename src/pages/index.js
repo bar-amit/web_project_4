@@ -24,11 +24,6 @@ const api = new Api({host: 'https://around.nomoreparties.co/v1/group-12', author
 
 const profileView = new UserInfo(profileSelectors);
 
-api.getUserInfo().then(data=>{
-  profileView.setUserInfo(data);
-  profileView.setUserAvatar(data.avatar);
-});
-
 /*
   Popups:
 */
@@ -56,8 +51,7 @@ function handlePlaceSubmit(e) {
   e.preventDefault();
 
   const {title: name, link} = this._getInputValues();
-  gallerySection.addItem({name, link});
-  api.addCard({name, link});
+  api.addCard({name, link}).then(data => gallerySection.addItem(data));
   this.close();
 }
 
@@ -86,12 +80,15 @@ function handleAvatarSubmit(e){
   Cards:
 */
 
-const gallerySection = new Section({items: initialCards, renderer: addNewCard}, cardsContainerSelector);
-gallerySection.renderItems();
+const gallerySection = new Section(addNewCard, cardsContainerSelector);
+
+function getCardsFromApi(cards){
+  gallerySection.renderItems(cards.reverse());
+}
 
 function addNewCard(data){
-  const newCard = new Card(data, {...cardSelectors, openPicture: () => picturePopup.open(data)}, confirmPopup.open);
-  return newCard.generateCard();
+  const newCard = new Card({...data, liked: data.likes.some(obj=>obj._id===api.userId)}, {...cardSelectors, openPicture: () => picturePopup.open(data)}, confirmPopup.open, {addLike: () => api.addLike(data._id), removeLike: () => api.removeLike(data._id), deleteCard: () => api.deleteCard(data._id)});
+  return newCard.generateCard(data.owner._id===api.userId);
 }
 
 /*
@@ -135,3 +132,16 @@ function handleEditAvatarClick(e){
 profileFormValidator.enableValidation();
 pictureFormValidator.enableValidation();
 avatarFormValidator.enableValidation();
+
+/*
+  Load initial Api data:
+*/
+
+api.getUserInfo().then(data=>{
+  profileView.setUserInfo(data);
+  profileView.setUserAvatar(data.avatar);
+})
+.then(() =>
+  api.getCards()
+  .then(getCardsFromApi)
+  );

@@ -68,15 +68,15 @@ export default class Api {
     .catch(this._handleError)
   }
   deleteCard(id){
-    return fetch(`${host}/cards/${id}`, {method: 'DELETE', headers: this._headers})
+    return fetch(`${this._host}/cards/${id}`, {method: 'DELETE', headers: this._headers})
     .then(this._handleResponse)
   }
   addLike(id){
-    return fetch(`${host}/cards/likes/${id}`, {method: 'PUT', headers: this._headers})
+    return fetch(`${this._host}/cards/likes/${id}`, {method: 'PUT', headers: this._headers})
     .then(this._handleResponse)
   }
   removeLike(id){
-    return fetch(`${host}/cards/likes/${id}`, {method: 'DELETE', headers: this._headers})
+    return fetch(`${this._host}/cards/likes/${id}`, {method: 'DELETE', headers: this._headers})
     .then(this._handleResponse)
     .catch(this._handleError)
   }
