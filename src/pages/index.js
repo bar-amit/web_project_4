@@ -10,13 +10,13 @@ import PopupWithConfirmation from '../components/PopupWithConfirmation'
 import UserInfo from '../components/UserInfo';
 import Section  from '../components/Section';
 import Validation from '../components/Validation';
-import {profileSelectors, formSelectors, cardSelectors, editButtonSelector, addButtonSelector, editAvatarButtonSelector, avatarPopupSelector, confirmPopupSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, avatarFormSelector, initialCards} from '../components/constants'
+import {apiKey, profileSelectors, formSelectors, cardSelectors, editButtonSelector, addButtonSelector, editAvatarButtonSelector, avatarPopupSelector, confirmPopupSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, avatarFormSelector, initialCards} from '../components/constants'
 
 /*
   API:
 */
 
-const api = new Api({host: 'https://around.nomoreparties.co/v1/group-12', authorization: '9dcb4203-ec5d-4132-a4af-e260b13cb4d2 '});
+const api = new Api({host: apiKey.host, authorization: apiKey.token});
 
 /*
   Profile:

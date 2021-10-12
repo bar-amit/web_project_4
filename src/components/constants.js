@@ -1,36 +1,4 @@
 /*
-  Data:
-*/
-
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg"
-  }
-];
-
-
-/*
   DOM elements:
 */
 
@@ -85,4 +53,12 @@ const cardSelectors = {
 }
 const cardsContainerSelector = '.gallery__container';
 
-export {formSelectors, activePopupClass, cardSelectors, editButtonSelector, addButtonSelector, editAvatarButtonSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, avatarPopupSelector, confirmPopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, avatarFormSelector, initialCards, popupCloseButtonSelector, popupTitleSelector, popupImageSelector, profileSelectors};
+/*
+  Api:
+*/
+const apiKey = {
+  host: process.env.HOST,
+  token: process.env.TOKEN
+}
+
+export {apiKey, formSelectors, activePopupClass, cardSelectors, editButtonSelector, addButtonSelector, editAvatarButtonSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, avatarPopupSelector, confirmPopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, avatarFormSelector, popupCloseButtonSelector, popupTitleSelector, popupImageSelector, profileSelectors};
