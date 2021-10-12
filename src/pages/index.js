@@ -50,30 +50,45 @@ const avatarFormValidator = new Validation(formSelectors, avatarFormElement);
 function handlePlaceSubmit(e) {
   e.preventDefault();
 
+  this.toggleButtonText();
+
   const {title: name, link} = this._getInputValues();
-  api.addCard({name, link}).then(data => gallerySection.addItem(data));
-  this.close();
+  api.addCard({name, link}).then(data => gallerySection.addItem(data))
+  .then(() => {
+    this.close();
+    this.toggleButtonText();
+  });
 }
 
 // Profile form data handler
 function handleProfileSubmit(e) {
   e.preventDefault();
 
+  this.toggleButtonText();
+
   const {name, bio: about} = this._getInputValues();
   profileView.setUserInfo({name, about})
-  api.updateUser({name, about});
-  this.close();
+  api.updateUser({name, about})
+  .then(() => {
+    this.close();
+    this.toggleButtonText();
+  });
 }
 
 // Avatar form submit
 function handleAvatarSubmit(e){
   e.preventDefault();
 
+  this.toggleButtonText();
+
   const {url} = this._getInputValues();
 
-  api.updateUserAvatar(url);
   profileView.setUserAvatar(url);
-  this.close();
+  api.updateUserAvatar(url)
+  .then(() => {
+    this.close();
+    this.toggleButtonText();
+  });
 }
 
 /*
@@ -87,7 +102,13 @@ function getCardsFromApi(cards){
 }
 
 function addNewCard(data){
-  const newCard = new Card({...data, liked: data.likes.some(obj=>obj._id===api.userId)}, {...cardSelectors, openPicture: () => picturePopup.open(data)}, confirmPopup.open, {addLike: () => api.addLike(data._id), removeLike: () => api.removeLike(data._id), deleteCard: () => api.deleteCard(data._id)});
+  const cardApiFunctions = {
+    addLike: () => api.addLike(data._id),
+    removeLike: () => api.removeLike(data._id),
+    deleteCard: () => api.deleteCard(data._id)
+  }
+
+  const newCard = new Card({...data, liked: data.likes.some(obj=>obj._id===api.userId)}, {...cardSelectors, openPicture: () => picturePopup.open(data)}, confirmPopup.open, cardApiFunctions);
   return newCard.generateCard(data.owner._id===api.userId);
 }
 

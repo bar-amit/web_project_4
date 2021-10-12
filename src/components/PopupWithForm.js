@@ -4,10 +4,15 @@ import { formSelectors } from "./constants";
 export default class PopupWithForm extends Popup {
   constructor(selector, {handleSubmit, resetValidation}) {
     super(selector);
+
     this._handleSubmit = handleSubmit.bind(this);
     this._resetValidation = resetValidation;
+
     this._inputs = Array.from(this._element.querySelectorAll(formSelectors.inputSelector));
     this._form = this._element.querySelector(formSelectors.formSelector);
+    this._button = this._element.querySelector(formSelectors.submitButtonSelector);
+
+    this._buttonText = 'Saving...';
   }
   _setInputValues = (values) => {
     for (const [key, value] of Object.entries(values)) {
@@ -41,5 +46,10 @@ export default class PopupWithForm extends Popup {
   removeEventListeners = () => {
     this._form.removeEventListener('submit', this._handleSubmit);
     super.removeEventListeners();
+  }
+  toggleButtonText = () => {
+    const buttonText = this._button.textContent;
+    this._button.textContent = this._buttonText;
+    this._buttonText = buttonText;
   }
 }
