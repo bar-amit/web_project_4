@@ -25,12 +25,15 @@ The project is being built and deployed automatically ussing [Github Actions](ht
 Latest update:
 
 * Github Pages is fixed!
-* Webpack bungdling.
-* More refactoring: Popup, Section, and UserInfo classes.
+* API.
+* Edit Avatar popup.
+* Delete confirmation popup.
+* UX - showing "Saving.." while loading.
+* Development environment is set to work with environment variables.
 
 **What's next?**
 
 Upcoming:
 
-* API
+* Production environment will use [Github-Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) and the API keys will be trully safe.
 
