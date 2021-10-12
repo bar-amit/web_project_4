@@ -35,5 +35,5 @@ Latest update:
 
 Upcoming:
 
-* Production environment will use [Github-Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) and the API keys will be trully safe.
+* Production environment will use [Github-Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) and the API keys will be truly safe.
 
