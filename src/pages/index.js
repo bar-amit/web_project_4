@@ -10,7 +10,7 @@ import PopupWithConfirmation from '../components/PopupWithConfirmation'
 import UserInfo from '../components/UserInfo';
 import Section  from '../components/Section';
 import Validation from '../components/Validation';
-import {apiKey, profileSelectors, formSelectors, cardSelectors, editButtonSelector, addButtonSelector, editAvatarButtonSelector, avatarPopupSelector, confirmPopupSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, avatarFormSelector, initialCards} from '../components/constants'
+import {apiKey, profileSelectors, formSelectors, cardSelectors, editButtonSelector, addButtonSelector, editAvatarButtonSelector, avatarPopupSelector, confirmPopupSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, avatarFormSelector} from '../components/constants'
 
 /*
   API:
