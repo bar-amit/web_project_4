@@ -10,7 +10,7 @@ import PopupWithConfirmation from '../components/PopupWithConfirmation'
 import UserInfo from '../components/UserInfo';
 import Section  from '../components/Section';
 import Validation from '../components/Validation';
-import {apiKey, profileSelectors, formSelectors, cardSelectors, editButtonSelector, addButtonSelector, editAvatarButtonSelector, avatarPopupSelector, confirmPopupSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, avatarFormSelector} from '../components/constants'
+import {apiKey, profileSelectors, formSelectors, cardSelectors, editButtonSelector, addButtonSelector, editAvatarButtonSelector, avatarPopupSelector, confirmPopupSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, popupButtonSelector, avatarFormSelector} from '../components/constants'
 
 /*
   API:
@@ -32,7 +32,7 @@ const picturePopup = new PopupWithImage(picturePopupSelector);
 const editPopup = new PopupWithForm(editProfilePopupSelector, {handleSubmit: handleProfileSubmit, resetValidation: ()=>profileFormValidator.resetValidation()});
 const addPopup = new PopupWithForm(addCardPopupSelector, {handleSubmit: handlePlaceSubmit, resetValidation: ()=>pictureFormValidator.resetValidation()});
 const avatarPopup = new PopupWithForm(avatarPopupSelector, {handleSubmit: handleAvatarSubmit, resetValidation: ()=>avatarFormValidator.resetValidation()});
-const confirmPopup = new PopupWithConfirmation(confirmPopupSelector, formSelectors.submitButtonSelector);
+const confirmPopup = new PopupWithConfirmation(confirmPopupSelector, popupButtonSelector);
 
 /*
   Forms:

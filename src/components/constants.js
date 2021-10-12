@@ -9,8 +9,8 @@ const avatarFormSelector = '.form_name_edit-avatar';
 const formSelectors = {
   formSelector: ".form",
   inputSelector: ".form__input",
-  submitButtonSelector: ".popup__save-button",
-  inactiveButtonClass: "popup__save-button_disabled",
+  submitButtonSelector: ".form__save-button",
+  inactiveButtonClass: "form__save-button_disabled",
   inputErrorClass: "form__input_error",
   errorClass: "form__input-error_visible"
 }
@@ -38,7 +38,7 @@ const activePopupClass = "popup_visible";
 const popupCloseButtonSelector = '.popup__close-button';
 const popupTitleSelector = '.popup__picture-title';
 const popupImageSelector = '.popup__picture';
-
+const popupButtonSelector = '.popup__button';
 
 // Cards
 const cardSelectors = {
@@ -61,4 +61,4 @@ const apiKey = {
   token: process.env.TOKEN
 }
 
-export {apiKey, formSelectors, activePopupClass, cardSelectors, editButtonSelector, addButtonSelector, editAvatarButtonSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, avatarPopupSelector, confirmPopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, avatarFormSelector, popupCloseButtonSelector, popupTitleSelector, popupImageSelector, profileSelectors};
+export {apiKey, formSelectors, activePopupClass, cardSelectors, editButtonSelector, addButtonSelector, editAvatarButtonSelector, editProfilePopupSelector, addCardPopupSelector, picturePopupSelector, avatarPopupSelector, confirmPopupSelector, cardsContainerSelector, profileFormSelector, pictureFormSelector, avatarFormSelector, popupCloseButtonSelector, popupTitleSelector, popupImageSelector, popupButtonSelector, profileSelectors};
