@@ -9,17 +9,13 @@ export default class Api {
       return res.json();
     return Promise.reject(`error: ${res.status}, ${res.statusText}`);
   }
-  _handleError(error){
-    console.log(error)
-  }
   getUserInfo(id='me'){
     return fetch(`${this._host}/users/${id}`,{headers: this._headers})
     .then(this._handleResponse)
     .then(data => {
       this.userId = data._id;
       return data;
-    })
-    .catch(this._handleError)
+    });
   }
   updateUserAvatar(avatar){
     return fetch(`${this._host}/users/me/avatar`,{
@@ -31,13 +27,11 @@ export default class Api {
       body: JSON.stringify({
         avatar
       })})
-    .then(this._handleResponse)
-    .catch(this._handleError)
+    .then(this._handleResponse);
   }
   getCards(){
     return fetch(`${this._host}/cards`,{headers: this._headers})
-    .then(this._handleResponse)
-    .catch(this._handleError)
+    .then(this._handleResponse);
   }
   updateUser({name,about}){
     return fetch(`${this._host}/users/me`,{
@@ -50,8 +44,7 @@ export default class Api {
         name,
         about
       })})
-    .then(this._handleResponse)
-    .catch(this._handleError)
+    .then(this._handleResponse);
   }
   addCard({name,link}){
     return fetch(`${this._host}/cards`,{
@@ -64,20 +57,18 @@ export default class Api {
         name,
         link
       })})
-    .then(this._handleResponse)
-    .catch(this._handleError)
+    .then(this._handleResponse);
   }
   deleteCard(id){
     return fetch(`${this._host}/cards/${id}`, {method: 'DELETE', headers: this._headers})
-    .then(this._handleResponse)
+    .then(this._handleResponse);
   }
   addLike(id){
     return fetch(`${this._host}/cards/likes/${id}`, {method: 'PUT', headers: this._headers})
-    .then(this._handleResponse)
+    .then(this._handleResponse);
   }
   removeLike(id){
     return fetch(`${this._host}/cards/likes/${id}`, {method: 'DELETE', headers: this._headers})
-    .then(this._handleResponse)
-    .catch(this._handleError)
+    .then(this._handleResponse);
   }
 }

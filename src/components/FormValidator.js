@@ -1,4 +1,4 @@
-class Validation {
+class FormValidator {
   constructor({inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass}, form) {
     this._form = form;
 
@@ -84,4 +84,4 @@ class Validation {
   }
 }
 
-export default Validation;
+export default FormValidator;

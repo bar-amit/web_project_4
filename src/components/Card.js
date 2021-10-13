@@ -1,5 +1,5 @@
 class Card {
-  constructor({name, link, likes, liked}, assets, confirmDelete, {addLike, removeLike, deleteCard}) {
+  constructor({name, link, likes, liked}, assets, confirmDelete, {addLike, removeLike, deleteCard, handleError}) {
 
     //data
     this._name = name;
@@ -25,6 +25,7 @@ class Card {
     this._addLikeApi = addLike;
     this._removeLikeApi = removeLike;
     this._deleteCardApi = deleteCard;
+    this._handleError = handleError;
 
     this._activeLikeButtonClass = assets.activeLikeButtonClass;
   }
@@ -36,27 +37,33 @@ class Card {
 
   _handleCardDelete() {
     this._confirm(() =>{
-      this._element.remove();
-      this._element = null;
-      this._deleteCardApi();
+      this._deleteCardApi()
+      .then(() => {
+        this._element.remove();
+        this._element = null;
+      })
+      .catch(this._handleError);
     })
   }
 
-  _handleLikeClick() {
+  _updateLikes = (data) => {
     const likeButton = this._element.querySelector(this._cardLikeSelector);
+    likeButton.classList.toggle(this._activeLikeButtonClass);
+    this._isliked = !this._isliked;
+    this._likeCount = data.likes.length;
+    this._element.querySelector(this._cardLikesCounterSelector).textContent = `${this._likeCount}`;
+  }
+
+  _handleLikeClick() {
     if(this._isliked){
-      this._isliked = false;
-      this._likeCount--;
-      likeButton.classList.remove(this._activeLikeButtonClass);
-      this._element.querySelector(this._cardLikesCounterSelector).textContent = `${this._likeCount}`;
-      this._removeLikeApi();
+      this._removeLikeApi()
+      .then(this._updateLikes)
+      .catch(this._handleError);
     }
     else {
-      this._isliked = true;
-      this._likeCount++;
-      likeButton.classList.add(this._activeLikeButtonClass);
-      this._element.querySelector(this._cardLikesCounterSelector).textContent = `${this._likeCount}`;
-      this._addLikeApi();
+      this._addLikeApi()
+      .then(this._updateLikes)
+      .catch(this._handleError);
     }
   }
 
