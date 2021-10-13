@@ -54,15 +54,15 @@ const avatarFormValidator = new FormValidator(formSelectors, avatarFormElement);
 function handlePlaceSubmit(e) {
   e.preventDefault();
 
-  this.toggleButtonText();
+  addPopup.toggleButtonText();
 
-  const {title: name, link} = this._getInputValues();
+  const {title: name, link} = addPopup.getInputValues();
   api.addCard({name, link})
   .then(data => gallerySection.addItem(data))
   .then(() => {
-    this.close();
+    addPopup.close();
   })
-  .finally(this.toggleButtonText)
+  .finally(addPopup.toggleButtonText)
   .catch(handleApiError);
 }
 
@@ -70,15 +70,15 @@ function handlePlaceSubmit(e) {
 function handleProfileSubmit(e) {
   e.preventDefault();
 
-  this.toggleButtonText();
+  editPopup.toggleButtonText();
 
-  const {name, bio: about} = this._getInputValues();
+  const {name, bio: about} = editPopup.getInputValues();
   api.updateUser({name, about})
   .then(() => {
     profileView.setUserInfo({name, about});
-    this.close();
+    editPopup.close();
   })
-  .finally(this.toggleButtonText)
+  .finally(editPopup.toggleButtonText)
   .catch(handleApiError);
 }
 
@@ -86,16 +86,16 @@ function handleProfileSubmit(e) {
 function handleAvatarSubmit(e){
   e.preventDefault();
 
-  this.toggleButtonText();
+  avatarPopup.toggleButtonText();
 
-  const {url} = this._getInputValues();
+  const {url} = avatarPopup.getInputValues();
 
   profileView.setUserAvatar(url);
   api.updateUserAvatar(url)
   .then(() => {
-    this.close();
+    avatarPopup.close();
   })
-  .finally(this.toggleButtonText)
+  .finally(avatarPopup.toggleButtonText)
   .catch(handleApiError);
 }
 
