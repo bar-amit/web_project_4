@@ -1,5 +1,5 @@
 class Card {
-  constructor({name, link, likes, liked}, assets, confirmDelete, {addLike, removeLike, deleteCard, handleError}) {
+  constructor({name, link, likes, liked}, assets, {addLike, removeLike, deleteCard, handleError ,confirmDelete}) {
 
     //data
     this._name = name;
@@ -16,18 +16,15 @@ class Card {
     this._cardLikesCounterSelector = assets.cardLikeCounterSelector;
     this._cardDeleteSelector = assets.cardDeleteSelector;
 
-    // bound handlers:
-    this._handleLike = this._handleLikeClick.bind(this);
-    this._handleDelete = this._handleCardDelete.bind(this);
+    this._activeLikeButtonClass = assets.activeLikeButtonClass;
 
+    // functions
     this._handlePicture = assets.openPicture;
     this._confirm = confirmDelete;
     this._addLikeApi = addLike;
     this._removeLikeApi = removeLike;
     this._deleteCardApi = deleteCard;
     this._handleError = handleError;
-
-    this._activeLikeButtonClass = assets.activeLikeButtonClass;
   }
 
   _getTemplate() {
@@ -35,15 +32,14 @@ class Card {
     return cardTemplate.querySelector(this._cardSelector).cloneNode(true);
   }
 
-  _handleCardDelete() {
-    this._confirm(() =>{
+  _handleCardDelete = () => {
+    this._confirm(() =>
       this._deleteCardApi()
       .then(() => {
         this._element.remove();
         this._element = null;
       })
-      .catch(this._handleError);
-    })
+    , this._handleError);
   }
 
   _updateLikes = (data) => {
@@ -54,7 +50,7 @@ class Card {
     this._element.querySelector(this._cardLikesCounterSelector).textContent = `${this._likeCount}`;
   }
 
-  _handleLikeClick() {
+  _handleLikeClick = () => {
     if(this._isliked){
       this._removeLikeApi()
       .then(this._updateLikes)
@@ -73,14 +69,14 @@ class Card {
     const cardDeleteButton = this._element.querySelector(this._cardDeleteSelector);
 
     if(isCardOwner){
-      cardDeleteButton.addEventListener('click', this._handleDelete);
+      cardDeleteButton.addEventListener('click', this._handleCardDelete);
     }
     else {
       cardDeleteButton.remove();
     }
 
     cardImage.addEventListener('click', this._handlePicture);
-    cardLikeButton.addEventListener('click', this._handleLike);
+    cardLikeButton.addEventListener('click', this._handleLikeClick);
   }
 
   generateCard(isCardOwner=false){

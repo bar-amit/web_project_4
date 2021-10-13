@@ -114,10 +114,11 @@ function addNewCard(data){
     addLike: () => api.addLike(data._id),
     removeLike: () => api.removeLike(data._id),
     deleteCard: () => api.deleteCard(data._id),
-    handleError: handleApiError
+    handleError: handleApiError,
+    confirmDelete: confirmPopup.open
   }
 
-  const newCard = new Card({...data, liked: data.likes.some(obj=>obj._id===api.userId)}, {...cardSelectors, openPicture: () => picturePopup.open(data)}, confirmPopup.open, cardApiFunctions);
+  const newCard = new Card({...data, liked: data.likes.some(obj=>obj._id===api.userId)}, {...cardSelectors, openPicture: () => picturePopup.open(data)}, cardApiFunctions);
   return newCard.generateCard(data.owner._id===api.userId);
 }
 
