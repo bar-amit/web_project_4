@@ -90,9 +90,9 @@ function handleAvatarSubmit(e){
 
   const {url} = avatarPopup.getInputValues();
 
-  profileView.setUserAvatar(url);
   api.updateUserAvatar(url)
   .then(() => {
+    profileView.setUserAvatar(url);
     avatarPopup.close();
   })
   .finally(avatarPopup.toggleButtonText)
